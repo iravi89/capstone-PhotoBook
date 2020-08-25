@@ -26,9 +26,9 @@ Greeting page for new users:
 
 My Album  page stores all the album created by signed user. User can create albums, upload images to particular album. User will have two choices for every images of each album. User either can delete it or can pin it to their favourite image list.
 
-![MyAlbum](images/album.png?raw=true "Image 2")
+![MyAlbum](screenshoots/album.png?raw=true "Image 2")
 
-![Favourite](images/favourite.png?raw=true "Image 3")
+![Favourite](screenshoots/favourite.png?raw=true "Image 3")
 
 
 ## Next steps
