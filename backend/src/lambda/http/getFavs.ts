@@ -19,14 +19,4 @@ export const handler: APIGatewayProxyHandler = async (event: APIGatewayProxyEven
   logger.info(`Listing all Fav images user ${userId}`)
   return new ApiResponseHelper().generateImagesDataSuccessResponse(200,images)
 
-  // return {
-  //   statusCode: 200,
-  //   headers: {
-  //     'Access-Control-Allow-Origin': '*',
-  //     'Access-Control-Allow-Credentials': true
-  //   },
-  //   body: JSON.stringify({
-  //     items: images
-  //   })
-  // }
 }

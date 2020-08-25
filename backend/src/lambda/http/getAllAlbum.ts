@@ -13,7 +13,7 @@ export const handler: APIGatewayProxyHandler = async (event: APIGatewayProxyEven
 
   const albums = await getAlbums(jwtToken);
   logger.info(`Listing all albums`)
-  //return new ApiResponseHelper().generateAlbumsDataSuccessResponse(200,albums)
+  
   return {
     statusCode: 200,
     headers: {

@@ -19,30 +19,10 @@ export const handler: APIGatewayProxyHandler = async (event: APIGatewayProxyEven
   if (!image) {
     logger.error(`Image not found`)
     return new ApiResponseHelper().generateErrorResponse(404,'Image not found')
-    // return {
-    //   statusCode: 404,
-    //   headers: {
-    //     'Access-Control-Allow-Origin': '*',
-    //     'Access-Control-Allow-Credentials': true
-    //   },
-    //   body: JSON.stringify({
-    //     error: 'Image not found'
-    //   })
-    // }
+
   }
 
   const newItem = await pinImage(image, jwtToken)
   logger.info(`Listing fav images`)
   return new ApiResponseHelper().generateImageDataSuccessResponse(201,newItem)
-
-  // return {
-  //   statusCode: 201,
-  //   headers: {
-  //     'Access-Control-Allow-Origin': '*',
-  //     'Access-Control-Allow-Credentials': true
-  //   },
-  //   body: JSON.stringify({
-  //     newItem: newItem
-  //   })
-  // }
 }

@@ -18,14 +18,5 @@ export const handler: APIGatewayProxyHandler = async (event: APIGatewayProxyEven
   logger.info(`Album creating`)
   const newItem = await createAlbum(newAlbum, jwtToken)
   return new ApiResponseHelper().generateDataSuccessResponse(201,'item',newItem)
-  // return {
-  //   statusCode: 201,
-  //   headers: {
-  //     'Access-Control-Allow-Origin': '*',
-  //     'Access-Control-Allow-Credentials': true
-  //   },
-  //   body: JSON.stringify({
-  //     newItem
-  //   })
-  // }
+
 }

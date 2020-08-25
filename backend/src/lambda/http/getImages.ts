@@ -19,29 +19,11 @@ export const handler: APIGatewayProxyHandler = async (event: APIGatewayProxyEven
   if (!validAlbumId) {
     logger.error(`not a valid album`)
     return new ApiResponseHelper().generateErrorResponse(404,'Album not found')
-    // return {
-    //   statusCode: 404,
-    //   headers: {
-    //     'Access-Control-Allow-Origin': '*',
-    //     'Access-Control-Allow-Credentials': true
-    //   },
-    //   body: JSON.stringify({
-    //     error: 'Album not found'
-    //   })
-    // }
+
   }
 
   const images = await getImages(albumId)
   logger.info(`Listing images for album: ${albumId}`)
   return new ApiResponseHelper().generateImagesDataSuccessResponse(200,images)
-  // return {
-  //   statusCode: 200,
-  //   headers: {
-  //     'Access-Control-Allow-Origin': '*',
-  //     'Access-Control-Allow-Credentials': true
-  //   },
-  //   body: JSON.stringify({
-  //     items: images
-  //   })
-  // }
+
 }

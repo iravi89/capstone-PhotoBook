@@ -17,19 +17,8 @@ export const handler: APIGatewayProxyHandler = async (event: APIGatewayProxyEven
   logger.error(`Album not found`)
 
     return new ApiResponseHelper().generateErrorResponse(404,'Album not found')
-    // return {
-    //   statusCode: 404,
-    //   headers: {
-    //     'Access-Control-Allow-Origin': '*',
-    //     'Access-Control-Allow-Credentials': true
-    //   },
-    //   body: JSON.stringify({
-    //     error: 'Album not found'
-    //   })
-    // }
-  }
 
-  //return new ApiResponseHelper().generateAlbumDataSuccessResponse(200,album)
+  }
 
   return {
     statusCode: 200,

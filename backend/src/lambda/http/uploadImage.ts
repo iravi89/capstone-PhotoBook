@@ -21,16 +21,7 @@ export const handler: APIGatewayProxyHandler = async (event: APIGatewayProxyEven
     //const error_msg = 'Album not found'
     logger.error(`Album not found`)
     return new ApiResponseHelper().generateErrorResponse(404,'Album not found')
-    // return {
-    //   statusCode: 404,
-    //   headers: {
-    //     'Access-Control-Allow-Origin': '*',
-    //     'Access-Control-Allow-Credentials': true
-    //   },
-    //   body: JSON.stringify({
-    //     error: 'Album not found'
-    //   })
-    // }
+
   }
 
   const newImage: CreateImageRequest = JSON.parse(event.body)
@@ -38,7 +29,7 @@ export const handler: APIGatewayProxyHandler = async (event: APIGatewayProxyEven
 
   const url = getUploadUrl(newItem.imageId)
   logger.info(`Image Uploaded`)
-  //return new ApiResponseHelper().generateImageItemDataSuccessResponse(201,newItem,url)
+ 
   return {
     statusCode: 201,
     headers: {

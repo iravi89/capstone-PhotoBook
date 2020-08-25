@@ -11,17 +11,8 @@ export const handler: APIGatewayProxyHandler = async (event: APIGatewayProxyEven
   console.log('Caller event', event)
 
   const images = await getAllImages()
- // let items = images
+
   logger.info(`Listing all Images`)
   return new ApiResponseHelper().generateImagesDataSuccessResponse(200,images)
-  // return {
-  //   statusCode: 200,
-  //   headers: {
-  //     'Access-Control-Allow-Origin': '*',
-  //     'Access-Control-Allow-Credentials': true
-  //   },
-  //   body: JSON.stringify({
-  //     items: images
-  //   })
-  // }
+
 }
