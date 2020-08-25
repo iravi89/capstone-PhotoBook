@@ -23,25 +23,11 @@ export const handler: APIGatewayProxyHandler = async (event: APIGatewayProxyEven
     await deleteAlbum(albumId, jwtToken)
     logger.info(`Album deleted`)
     return new ApiResponseHelper().generateDataSuccessMsgResponse(200,'Album Deleted')
-    // return {
-    //   statusCode: 200,
-    //   headers: {
-    //     'Access-Control-Allow-Origin': '*',
-    //     'Access-Control-Allow-Credentials': true
-    //   },
-    //   body: 'Deleted'
-    // }
+
   } catch (err) {
     console.log('Failed to delete', err)
     logger.info(`Album failed to delete`)
     return new ApiResponseHelper().generateErrorResponse(500,'Failed to delete')
-    // return {
-    //   statusCode: 500,
-    //   headers: {
-    //     'Access-Control-Allow-Origin': '*',
-    //     'Access-Control-Allow-Credentials': true
-    //   },
-    //   body: 'Failed to delete', 
-    // }
+
   }
 }
