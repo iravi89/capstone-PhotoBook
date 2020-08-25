@@ -18,7 +18,7 @@ For Authentication I have used `Auth0` authencication services.
 
 User need to login/signup and after proper authentication user can access the content of this application. I have used 3rd party service provider `Auth0` to handle the authentication.
 
-Greeting page for new users:
+Welcome page for new users:
 
 ![DashBoard](screenshoots/dashboard.png?raw=true "Image 1")
 
