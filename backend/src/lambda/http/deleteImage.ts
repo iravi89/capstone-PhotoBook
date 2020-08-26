@@ -1,8 +1,9 @@
 import 'source-map-support/register'
 
 import { APIGatewayProxyEvent, APIGatewayProxyResult, APIGatewayProxyHandler } from 'aws-lambda'
-import { deleteImage, getImage } from '../../businessLogic/images'
-import { getUserId } from '../../auth/utils'
+import { getUserById} from '../../utils/jwtAuth'
+import {getImage,deleteImage} from '../../businessLogic/items'
+//import { getUserId } from '../../auth/utils'
 import { ApiResponseHelper } from '../../helpers/apiResponseHelper'
 import { createLogger } from '../../utils/logger'
 
@@ -13,10 +14,12 @@ export const handler: APIGatewayProxyHandler = async (event: APIGatewayProxyEven
   console.log('Caller event', event)
   const imageId = event.pathParameters.imageId
 
-  const authorization = event.headers.Authorization
-  const split = authorization.split(' ')
-  const jwtToken = split[1]
-  const userId = getUserId(jwtToken)
+  // const authorization = event.headers.Authorization
+  // const split = authorization.split(' ')
+  // const jwtToken = split[1]
+  const authHeader = event.headers['Authorization']
+  const jwtToken = getUserById(authHeader)
+  const userId = jwtToken//getUserId(jwtToken)
   
   const image = await getImage(imageId)
 

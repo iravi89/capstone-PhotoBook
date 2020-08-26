@@ -1,19 +1,21 @@
 import { APIGatewayProxyHandler, APIGatewayProxyEvent, APIGatewayProxyResult } from 'aws-lambda'
 import 'source-map-support/register'
 
-import { CreateImageRequest } from '../../requests/CreateImageRequest'
-import { albumExists } from '../../businessLogic/albums'
-import { createImage, getUploadUrl } from '../../businessLogic/images'
+import { CreateImageInterface } from '../../requests/CreateImageRequest'
+import { albumExists } from '../../businessLogic/items'
+import { createImage, getUploadUrl } from '../../businessLogic/items'
 import { ApiResponseHelper } from '../../helpers/apiResponseHelper'
 import { createLogger } from '../../utils/logger'
-
+import { getUserById} from '../../utils/jwtAuth'
 const logger = createLogger('Albumlogs')
 export const handler: APIGatewayProxyHandler = async (event: APIGatewayProxyEvent): Promise<APIGatewayProxyResult> => {
-  console.log('Caller event', event)
+  // console.log('Caller event', event)
 
-  const authorization = event.headers.Authorization
-  const split = authorization.split(' ')
-  const jwtToken = split[1]
+  // const authorization = event.headers.Authorization
+  // const split = authorization.split(' ')
+  // const jwtToken = split[1]
+  const authHeader = event.headers['Authorization']
+  const jwtToken = getUserById(authHeader)
   const albumId = event.pathParameters.albumId
   const validAlbumId = await albumExists(albumId, jwtToken)
 
@@ -24,7 +26,7 @@ export const handler: APIGatewayProxyHandler = async (event: APIGatewayProxyEven
 
   }
 
-  const newImage: CreateImageRequest = JSON.parse(event.body)
+  const newImage: CreateImageInterface = JSON.parse(event.body)
   const newItem = await createImage(newImage, albumId, jwtToken)
 
   const url = getUploadUrl(newItem.imageId)

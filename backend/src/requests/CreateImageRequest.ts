@@ -1,3 +1,3 @@
-export interface CreateImageRequest {
+export interface CreateImageInterface {
   title: string
 }

@@ -1,7 +1,7 @@
 import * as AWS  from 'aws-sdk'
 //import * as AWSXRay from 'aws-xray-sdk'
 const AWSXRay = require('aws-xray-sdk')
-import { DocumentClient } from 'aws-sdk/clients/dynamodb'
+
 
 const XAWS = AWSXRay.captureAWS(AWS)
 
@@ -10,7 +10,7 @@ import { Album } from '../models/Album'
 export class AlbumAccess {
 
   constructor(
-    private readonly docClient: DocumentClient = createDynamoDBClient(),
+    private readonly docClient:AWS.DynamoDB.DocumentClient = new XAWS.DynamoDB.DocumentClient(),
     private readonly albumsTable = process.env.ALBUMS_TABLE) {
   }
 
@@ -75,14 +75,3 @@ export class AlbumAccess {
   }
 }
 
-function createDynamoDBClient() {
-  if (process.env.IS_OFFLINE) {
-    console.log('Creating a local DynamoDB instance')
-    return new XAWS.DynamoDB.DocumentClient({
-      region: 'localhost',
-      endpoint: 'http://localhost:8000'
-    })
-  }
-
-  return new XAWS.DynamoDB.DocumentClient()
-}

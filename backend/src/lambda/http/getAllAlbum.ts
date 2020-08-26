@@ -1,16 +1,16 @@
 import 'source-map-support/register'
-import { getAlbums } from '../../businessLogic/albums'
-//import { ApiResponseHelper } from '../../helpers/apiResponseHelper'
+import { getAlbums } from '../../businessLogic/items'
 import { APIGatewayProxyEvent, APIGatewayProxyResult, APIGatewayProxyHandler } from 'aws-lambda'
 import { createLogger } from '../../utils/logger'
-
+import { getUserById} from '../../utils/jwtAuth'
 const logger = createLogger('Albumlogs')
 export const handler: APIGatewayProxyHandler = async (event: APIGatewayProxyEvent): Promise<APIGatewayProxyResult> => {
-  console.log('Caller event', event)
-  const authorization = event.headers.Authorization
-  const split = authorization.split(' ')
-  const jwtToken = split[1]
-
+  // console.log('Caller event', event)
+  // const authorization = event.headers.Authorization
+  // const split = authorization.split(' ')
+  // const jwtToken = split[1]
+  const authHeader = event.headers['Authorization']
+  const jwtToken = getUserById(authHeader)
   const albums = await getAlbums(jwtToken);
   logger.info(`Listing all albums`)
   

@@ -1,18 +1,22 @@
 import 'source-map-support/register'
 
 import { APIGatewayProxyEvent, APIGatewayProxyResult, APIGatewayProxyHandler } from 'aws-lambda'
-import { pinImage, getImage } from '../../businessLogic/images'
+
+import { pinImage,getImage} from '../../businessLogic/items'
 import { ApiResponseHelper } from '../../helpers/apiResponseHelper'
 import { createLogger } from '../../utils/logger'
-
+import { getUserById} from '../../utils/jwtAuth'
 const logger = createLogger('Albumlogs')
+
 export const handler: APIGatewayProxyHandler = async (event: APIGatewayProxyEvent): Promise<APIGatewayProxyResult> => {
-  console.log('Caller event', event)
+ // console.log('Caller event', event)
   const imageId = event.pathParameters.imageId
 
-  const authorization = event.headers.Authorization
-  const split = authorization.split(' ')
-  const jwtToken = split[1]
+  // const authorization = event.headers.Authorization
+  // const split = authorization.split(' ')
+  // const jwtToken = split[1]
+  const authHeader = event.headers['Authorization']
+  const jwtToken = getUserById(authHeader)
   
   const image = await getImage(imageId)
 
