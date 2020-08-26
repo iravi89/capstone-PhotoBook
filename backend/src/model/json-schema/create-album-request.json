@@ -8,7 +8,8 @@
     },
     "description": {
       "type": "string"
-    }
+    },
+    "location":{"type":"string"}
   },
   "required": [
     "name",

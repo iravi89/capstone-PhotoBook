@@ -31,7 +31,8 @@ export async function createAlbum(
     name: createAlbumRequest.name,
     description: createAlbumRequest.description,
     private: createAlbumRequest.private,
-    timestamp: new Date().toISOString()
+    timestamp: new Date().toISOString(),
+    location:createAlbumRequest.location
   })
 }
 
@@ -92,7 +93,7 @@ export async function createImage(
 }
 
 export async function pinImage(image: Image, jwtToken: string): Promise<Image> {
-  const userId = jwtToken//getUserId(jwtToken)
+  const userId = jwtToken
   const imageId = uuid.v4()
 
   return imagesAccess.createImage({

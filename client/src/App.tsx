@@ -50,14 +50,16 @@ export default class App extends Component<AppProps, AppState> {
             </Grid.Row>
           </Grid>
         </Segment>
+
       </div>
+      
     )
   }
 
   generateMenu() {
     return (
       <Menu>
-        <Menu.Item name="home">
+        <Menu.Item name="home" >
           <Link to="/">My Album</Link>
         </Menu.Item>
         <Menu.Item name="Favorite">
@@ -68,6 +70,7 @@ export default class App extends Component<AppProps, AppState> {
         </Menu.Item> */}
         <Menu.Menu position="right">{this.logInLogOutButton()}</Menu.Menu>
       </Menu>
+
     )
   }
 
@@ -107,21 +110,21 @@ export default class App extends Component<AppProps, AppState> {
           exact 
           render={props => {
             return <ImagesList {...props} auth={this.props.auth} />
-          }} />
+          }} 
         />
 
         <Route path="/images" 
           exact 
           render={props => {
             return <ImagesDiscover {...props} auth={this.props.auth} />
-          }} />
+          }}
         />
 
         <Route path="/pins" 
           exact 
           render={props => {
             return <ImagesPins {...props} auth={this.props.auth} />
-          }} />
+          }} 
         />
 
         <Route

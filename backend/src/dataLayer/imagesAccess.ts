@@ -69,7 +69,7 @@ export class ImagesAccess {
   }
 
   async getAllImages(): Promise<Image[]> {
-    const result = await this.docClient.scan({
+    const result = await this.docClient.query({
       TableName: this.imagesTable,
     }).promise()
     const items = result.Items

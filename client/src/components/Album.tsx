@@ -30,7 +30,8 @@ export class Album extends React.PureComponent<AlbumCardProps, AlbumCardState> {
 
 
           </Card.Header>
-          <Card.Description>{this.props.album.description}</Card.Description>
+          <Card.Description>Description:  {this.props.album.description}</Card.Description>
+          <Card.Description>Location:  {this.props.album.location}</Card.Description>
         </Card.Content>
       </Card>
     )

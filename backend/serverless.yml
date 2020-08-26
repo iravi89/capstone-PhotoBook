@@ -1,5 +1,5 @@
 service:
-  name: serverless-album
+  name: serverless-album-1
 # app and org for use with dashalbum.serverless.com
 #app: your-app-name
 #org: your-org-name
@@ -48,9 +48,9 @@ provider:
     minimumCompressionSize: 1024 # Enable gzip compression for responses > 1 KB
   environment:
     AWS_NODEJS_CONNECTION_REUSE_ENABLED: 1
-    ALBUMS_TABLE: albums-${self:provider.stage}
-    IMAGES_TABLE: album-images-v2-${self:provider.stage}
-    IMAGES_S3_BUCKET: serverless-album-images-${self:provider.stage}
+    ALBUMS_TABLE: albums-1-${self:provider.stage}
+    IMAGES_TABLE: album-images-1-v2-${self:provider.stage}
+    IMAGES_S3_BUCKET: serverless-1-album-images-${self:provider.stage}
     IMAGE_ID_INDEX: ImageIdIndex
 
 functions:

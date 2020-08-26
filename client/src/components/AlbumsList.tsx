@@ -35,6 +35,17 @@ export class AlbumsList extends React.PureComponent<AlbumsListProps, AlbumsListS
     }
   }
 
+  onAlbumEdit = async (albumId: string) => {
+    try {
+      await deleteAlbum(albumId, this.props.auth.getIdToken())
+      this.setState({
+        albums: this.state.albums.filter(album => album.id != albumId)
+      })
+    } catch {
+      alert('Image deletion failed')
+    }
+  }
+
   async componentDidMount() {
     try {
       const albums = await getAlbums(this.props.auth.getIdToken())
@@ -78,8 +89,18 @@ export class AlbumsList extends React.PureComponent<AlbumsListProps, AlbumsListS
                     >
                       <Icon name="delete" />
                 </Button>
+                <Button
+                      icon
+                      color="green"
+                      size="mini"
+                      onClick={() => this.onAlbumDelete(album.id)}
+                      floated="right"
+                    >
+                      <Icon name="edit" />
+                </Button>
               </Card.Header>
-              <Card.Description>{album.description}</Card.Description>
+              <Card.Description>Description:  {album.description}</Card.Description>
+              <Card.Description>Location:  {album.location}</Card.Description>
             </Card.Content>
             </Card>
           })}

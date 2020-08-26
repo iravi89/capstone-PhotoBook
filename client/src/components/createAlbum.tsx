@@ -13,6 +13,7 @@ interface CreateAlbumState {
   description: string
   uploadingAlbum: boolean
   redirect: boolean
+  location:string
 }
 
 export class CreateAlbum extends React.PureComponent<
@@ -23,7 +24,8 @@ CreateAlbumProps,
     name: '',
     description: '',
     uploadingAlbum: false,
-    redirect: false
+    redirect: false,
+    location:''
   }
 
   handleNameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -32,6 +34,10 @@ CreateAlbumProps,
 
   handleDescriptionChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     this.setState({ description: event.target.value })
+  }
+
+  handleLocationChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    this.setState({ location: event.target.value })
   }
 
   handleSubmit = async (event: React.SyntheticEvent) => {
@@ -49,10 +55,11 @@ CreateAlbumProps,
       this.setUploadState(true)
       const album = await createAlbum(this.props.auth.getIdToken(), {
         name: this.state.name,
-        details: this.state.description
+        details: this.state.description,
+        location: this.state.location
       })
 
-      console.log('Created description', album)
+      console.log('Created description', this.state.location)
 
       alert('Album created!')
       this.setRedirect(true)
@@ -97,9 +104,17 @@ CreateAlbumProps,
             />
           </Form.Field>
           <Form.Field>
+            <label>Location</label>
+            <input
+              placeholder="Album location"
+              value={this.state.location}
+              onChange={this.handleLocationChange}
+            />
+          </Form.Field>
+          <Form.Field>
             <label>Details</label>
             <input
-              placeholder="album description"
+              placeholder="Album description"
               value={this.state.description}
               onChange={this.handleDescriptionChange}
             />

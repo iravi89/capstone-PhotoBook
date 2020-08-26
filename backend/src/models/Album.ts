@@ -5,4 +5,5 @@ export interface Album {
   userId: string
   private: boolean
   timestamp: string
+  location: string
 }
