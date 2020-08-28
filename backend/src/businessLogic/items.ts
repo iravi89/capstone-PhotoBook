@@ -13,7 +13,7 @@ const imagesAccess = new ImagesAccess()
 const bucketName = process.env.IMAGES_S3_BUCKET
 
 export async function getAlbums(jwtToken: string): Promise<Album[]> {
-  const userId = jwtToken//getUserId(jwtToken)
+  const userId = jwtToken
   return albumAccess.getAlbums(userId)
 }
 
@@ -23,7 +23,7 @@ export async function createAlbum(
 ): Promise<Album> {
 
   const itemId = uuid.v4()
-  const userId = jwtToken//getUserId(jwtToken)
+  const userId = jwtToken
 
   return await albumAccess.createAlbum({
     id: itemId,
@@ -40,7 +40,7 @@ export async function albumExists (
   albumId: string,
   jwtToken: string
 ): Promise<boolean> {
-  const userId = jwtToken//getUserId(jwtToken)
+  const userId = jwtToken
   return await albumAccess.albumExists(
     userId,
     albumId
@@ -51,7 +51,7 @@ export async function getAlbum (
   albumId: string,
   jwtToken: string
 ): Promise<Album> {
-  const userId = jwtToken//getUserId(jwtToken)
+  const userId = jwtToken
   return await albumAccess.getAlbum(
     userId,
     albumId
@@ -62,7 +62,7 @@ export async function deleteAlbum (
   albumId: string,
   jwtToken: string
 ): Promise<void> {
-  const userId = jwtToken//getUserId(jwtToken)
+  const userId = jwtToken
   const images = await imagesAccess.getImages(albumId);
   console.log('images', images)
   images.map(async (image: Image) => imagesAccess.deleteImage(image))
@@ -80,7 +80,7 @@ export async function createImage(
 ): Promise<Image> {
 
   const imageId = uuid.v4()
-  const userId = jwtToken//getUserId(jwtToken)
+  const userId = jwtToken
 
   return await imagesAccess.createImage({
     albumId: albumId,

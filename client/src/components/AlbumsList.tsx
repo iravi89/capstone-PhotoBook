@@ -1,10 +1,12 @@
 import * as React from 'react'
 import { AlbumModel } from '../types/AlbumModel'
-import { getAlbums, deleteAlbum } from '../api/Albums-api'
+import {UpdateAlbumInfo} from '../types/UpdateAlbumInfo'
+import { getAlbums, deleteAlbum ,editAlbum} from '../api/Albums-api'
 import { Card, Button, Divider, Icon } from 'semantic-ui-react'
 import { History } from 'history'
 import Auth from '../auth/Auth'
 import { Link } from 'react-router-dom'
+import * as moment1 from 'moment'
 
 interface AlbumsListProps {
   history: History
@@ -36,15 +38,9 @@ export class AlbumsList extends React.PureComponent<AlbumsListProps, AlbumsListS
   }
 
   onAlbumEdit = async (albumId: string) => {
-    try {
-      await deleteAlbum(albumId, this.props.auth.getIdToken())
-      this.setState({
-        albums: this.state.albums.filter(album => album.id != albumId)
-      })
-    } catch {
-      alert('Image deletion failed')
-    }
+    this.props.history.push(`/albums/edit/${albumId}`)
   }
+
 
   async componentDidMount() {
     try {
@@ -93,7 +89,7 @@ export class AlbumsList extends React.PureComponent<AlbumsListProps, AlbumsListS
                       icon
                       color="green"
                       size="mini"
-                      onClick={() => this.onAlbumDelete(album.id)}
+                      onClick={() => this.onAlbumEdit(album.id)}
                       floated="right"
                     >
                       <Icon name="edit" />
@@ -101,6 +97,7 @@ export class AlbumsList extends React.PureComponent<AlbumsListProps, AlbumsListS
               </Card.Header>
               <Card.Description>Description:  {album.description}</Card.Description>
               <Card.Description>Location:  {album.location}</Card.Description>
+              <Card.Description>Date:  { album.timestamp}</Card.Description>
             </Card.Content>
             </Card>
           })}

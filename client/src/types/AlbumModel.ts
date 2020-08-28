@@ -3,4 +3,5 @@ export interface AlbumModel {
   name: string
   description: string
   location:string
+  timestamp:string
 }

@@ -14,12 +14,10 @@ export const handler: APIGatewayProxyHandler = async (event: APIGatewayProxyEven
   console.log('Caller event', event)
   const imageId = event.pathParameters.imageId
 
-  // const authorization = event.headers.Authorization
-  // const split = authorization.split(' ')
-  // const jwtToken = split[1]
+
   const authHeader = event.headers['Authorization']
   const jwtToken = getUserById(authHeader)
-  const userId = jwtToken//getUserId(jwtToken)
+  const userId = jwtToken
   
   const image = await getImage(imageId)
 
