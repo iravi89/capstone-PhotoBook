@@ -116,3 +116,21 @@ export async function editAlbum(albumId: string, idToken: string,patch:UpdateAlb
   //   },
   // })
 }
+
+export async function saveAlbum(albumId: string, idToken: string,patch:UpdateAlbumInfo): 
+
+  Promise<void> {
+    await Axios.patch(`${apiEndpoint}/albums/${albumId}/save`, JSON.stringify(patch), {
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${idToken}`
+      }
+    })
+  // await fetch(`${apiEndpoint}/albums/${albumId}`, {
+  //   method: 'PUT',
+  //   headers: {
+  //     'Content-Type': 'application/json',
+  //     'Authorization': `Bearer ${idToken}`
+  //   },
+  // })
+}

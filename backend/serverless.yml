@@ -104,6 +104,33 @@ functions:
         Action:
           - dynamodb:Query
         Resource: arn:aws:dynamodb:${self:provider.region}:*:table/${self:provider.environment.ALBUMS_TABLE}
+
+  SaveAlbums:
+    handler: src/lambda/http/saveAlbum.handler
+    events:
+      - http:
+          method: post
+          path: albums/{albumId}/save
+          cors: true
+          authorizer: Auth
+          reqValidatorName: RequestBodyValidator
+          documentation:
+            summary: create new Album 
+            description: create new Alnum
+            requestModels:
+              'application/json': CreateAlbum
+    iamRoleStatements:
+      - Effect: "Allow" # xray permissions (required)
+        Action:
+          - "xray:PutTraceSegments"
+          - "xray:PutTelemetryRecords"
+        Resource:
+          - "*"
+      - Effect: Allow
+        Action:
+          - dynamodb:PutItem
+        Resource: arn:aws:dynamodb:${self:provider.region}:*:table/${self:provider.environment.ALBUMS_TABLE}
+
   UploadImage:
     handler: src/lambda/http/uploadImage.handler
     events:

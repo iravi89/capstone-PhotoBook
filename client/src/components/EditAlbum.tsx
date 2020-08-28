@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { Form, Button, Input, Label, Grid, Loader, GridRow, GridColumn, Divider, Message } from 'semantic-ui-react'
 import Auth from '../auth/Auth'
-import {editAlbum,getAlbum} from '../api/Albums-api'
+import {editAlbum,getAlbum,saveAlbum} from '../api/Albums-api'
 import {UpdateAlbumInfo} from '../types/UpdateAlbumInfo'
 import { Redirect } from 'react-router-dom'
 import { Album } from './Album'
@@ -92,7 +92,7 @@ import { Album } from './Album'
           return
         }
         this.setLoadingState(true)
-        const album = await editAlbum(this.props.match.params.albumId,this.props.auth.getIdToken(), {
+        const album = await saveAlbum(this.props.match.params.albumId,this.props.auth.getIdToken(), {
           name: this.state.album_name,
           details: this.state.des,
           location: this.state.location

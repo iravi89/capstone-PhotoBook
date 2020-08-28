@@ -9,6 +9,7 @@ import { CreateAlbum } from './components/createAlbum'
 import Auth from './auth/Auth'
 import { ImagesDiscover } from './components/ImagesSearch'
 import { ImagesPins } from './components/ImagesPins'
+import { EditTodo } from './components/EditAlbum'
 
 export interface AppProps {
   auth: Auth
@@ -103,6 +104,14 @@ export default class App extends Component<AppProps, AppState> {
           exact
           render={props => {
             return <CreateAlbum {...props} auth={this.props.auth} />
+          }}
+        />
+
+        <Route
+          path="/albums/edit/:albumId"
+          exact
+          render={props => {
+            return <EditTodo {...props} auth={this.props.auth} />
           }}
         />
 

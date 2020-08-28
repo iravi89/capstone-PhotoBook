@@ -7,6 +7,7 @@ import { CreateAlbumInterface } from '../requests/CreateAlbumRequest'
 //import { getUserId } from '../auth/utils'
 import { ImagesAccess } from '../dataLayer/imagesAccess'
 import { CreateImageInterface } from '../requests/CreateImageRequest'
+import { saveAlbumInterface } from '../requests/saveAlbumRequest'
 const albumAccess = new AlbumAccess()
 const imagesAccess = new ImagesAccess()
 
@@ -33,6 +34,27 @@ export async function createAlbum(
     private: createAlbumRequest.private,
     timestamp: new Date().toISOString(),
     location:createAlbumRequest.location
+  })
+}
+
+
+export async function saveAlbum(
+  saveAlbumRequest: saveAlbumInterface,
+  jwtToken: string,
+  albumId:string
+): Promise<Album> {
+
+  const itemId = albumId
+  const userId = jwtToken
+
+  return await albumAccess.createAlbum({
+    id: itemId,
+    userId: userId,
+    name: saveAlbumRequest.name,
+    description: saveAlbumRequest.description,
+    private: saveAlbumRequest.private,
+    timestamp: new Date().toISOString(),
+    location:saveAlbumRequest.location
   })
 }
 
@@ -91,6 +113,9 @@ export async function createImage(
     imageUrl: `https://${bucketName}.s3.amazonaws.com/${imageId}`
   })
 }
+
+
+
 
 export async function pinImage(image: Image, jwtToken: string): Promise<Image> {
   const userId = jwtToken
