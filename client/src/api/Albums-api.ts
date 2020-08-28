@@ -4,6 +4,7 @@ import { AlbumUploadInfo } from '../types/AlbumUploadInfo'
 import {UpdateAlbum} from '../types/UpdateAlbum'
 import Axios from 'axios'
 import { UpdateAlbumInfo } from '../types/UpdateAlbumInfo'
+import { pathToFileURL } from 'url'
 export async function getAlbums(idToken: string): Promise<AlbumModel[]> {
   console.log('Fetching albums')
 
@@ -120,12 +121,16 @@ export async function editAlbum(albumId: string, idToken: string,patch:UpdateAlb
 export async function saveAlbum(albumId: string, idToken: string,patch:UpdateAlbumInfo): 
 
   Promise<void> {
-    await Axios.patch(`${apiEndpoint}/albums/${albumId}/save`, JSON.stringify(patch), {
+
+    const reply = await Axios.post(`${apiEndpoint}/albums/${albumId}/save`, {name:patch.name,description:patch.details,location:patch.location}, {
       headers: {
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${idToken}`
       }
     })
+
+    return reply.data.items
+    
   // await fetch(`${apiEndpoint}/albums/${albumId}`, {
   //   method: 'PUT',
   //   headers: {

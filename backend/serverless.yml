@@ -118,7 +118,7 @@ functions:
             summary: create new Album 
             description: create new Alnum
             requestModels:
-              'application/json': CreateAlbum
+              'application/json': SaveAlbums
     iamRoleStatements:
       - Effect: "Allow" # xray permissions (required)
         Action:

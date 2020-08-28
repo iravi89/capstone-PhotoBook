@@ -97,12 +97,17 @@ import { Album } from './Album'
           details: this.state.des,
           location: this.state.location
         })
+        alert('Album saved!')
+        this.setRedirect(true)
+
 
     }catch (e) {
         alert('Could not upload an image: ' + e.message)
       } finally {
         this.setLoadingState(false)
       }
+
+
     }
     setLoadingState(updatingAlbum: boolean) {
         this.setState({
@@ -126,6 +131,7 @@ import { Album } from './Album'
         render() {
             return (
                 <div>
+                  {this.renderRedirect()}
                     <Form onSubmit={this.handleSubmit}>
                         <Form.Field>
                             <Label>Name</Label>
@@ -163,7 +169,7 @@ import { Album } from './Album'
                         <Grid>
                             <GridRow>
                                 <GridColumn width='2'>
-                                    <Button color='green' type='submit'>Save</Button>
+                                    <Button color='green' type='submit' loading={this.state.loading}>Save</Button>
                                 </GridColumn>
                                 <GridColumn width='11'>
     
