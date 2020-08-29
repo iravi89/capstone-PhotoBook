@@ -33,7 +33,9 @@ export async function createAlbum(
     description: createAlbumRequest.description,
     private: createAlbumRequest.private,
     timestamp: new Date().toISOString(),
-    location:createAlbumRequest.location
+    location:createAlbumRequest.location,
+    imgCnt:0
+    
   })
 }
 
@@ -54,9 +56,34 @@ export async function saveAlbum(
     description: saveAlbumRequest.description,
     private: saveAlbumRequest.private,
     timestamp: new Date().toISOString(),
-    location:saveAlbumRequest.location
+    location:saveAlbumRequest.location,
+    imgCnt:saveAlbumRequest.imageCount
   })
 }
+
+
+export async function updateImageCounter(
+  jwtToken: string,
+  albumId:string,
+  albumRequest: CreateAlbumInterface
+): Promise<Album> {
+
+  //const img = await albumAccess.getAlbum(albumId,jwtToken)
+  const itemId = albumId
+  const userId = jwtToken
+
+  return await albumAccess.createAlbum({
+    id: itemId,
+    userId: userId,
+    name: albumRequest.name,
+    description: albumRequest.description,
+    private: albumRequest.private,
+    timestamp: new Date().toISOString(),
+    location:albumRequest.location,
+    imgCnt:4
+  })
+}
+
 
 export async function albumExists (
   albumId: string,

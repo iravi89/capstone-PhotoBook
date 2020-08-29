@@ -98,6 +98,7 @@ export class AlbumsList extends React.PureComponent<AlbumsListProps, AlbumsListS
               <Card.Description>Description:  {album.description}</Card.Description>
               <Card.Description>Location:  {album.location}</Card.Description>
               <Card.Description>Date:  { album.timestamp}</Card.Description>
+              <Card.Description>Images:  {album.imageCount}</Card.Description>
             </Card.Content>
             </Card>
           })}

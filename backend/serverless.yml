@@ -17,7 +17,7 @@ custom:
       info:
         version: v1.0.0
         title: ToDos API
-        description: serverless api for ToDo application
+        description: serverless api for album creation application
     models:
       - name: CreateAlbum
         contentType: application/json
@@ -25,6 +25,10 @@ custom:
       - name: UploadImage
         contentType: application/json
         schema: ${file(src/model/json-schema/create-image-request.json)}
+      - name: SaveAlbums
+        contentType: application/json
+        schema: ${file(src/model/json-schema/create-image-request.json)}
+
 
 # Add the serverless-webpack plugin
 plugins:
@@ -67,13 +71,13 @@ functions:
           authorizer: Auth
           reqValidatorName: RequestBodyValidator
           documentation:
-            summary: create new Album 
+            summary: create new Album
             description: create new Alnum
             requestModels:
-              'application/json': CreateAlbum
+              "application/json": CreateAlbum
 
     iamRoleStatements:
-      - Effect: "Allow" 
+      - Effect: "Allow"
         Action:
           - "xray:PutTraceSegments"
           - "xray:PutTelemetryRecords"
@@ -84,7 +88,6 @@ functions:
           - dynamodb:PutItem
         Resource: arn:aws:dynamodb:${self:provider.region}:*:table/${self:provider.environment.ALBUMS_TABLE}
 
-
   GetAlbums:
     handler: src/lambda/http/getAllAlbum.handler
     events:
@@ -94,7 +97,7 @@ functions:
           cors: true
           authorizer: Auth
     iamRoleStatements:
-      - Effect: "Allow" 
+      - Effect: "Allow"
         Action:
           - "xray:PutTraceSegments"
           - "xray:PutTelemetryRecords"
@@ -114,11 +117,11 @@ functions:
           cors: true
           authorizer: Auth
           reqValidatorName: RequestBodyValidator
-          documentation:
-            summary: create new Album 
-            description: create new Alnum
-            requestModels:
-              'application/json': SaveAlbums
+          # documentation:
+          #   summary: update Album
+          #   description: update Album
+          #   requestModels:
+          #     "application/json": SaveAlbums
     iamRoleStatements:
       - Effect: "Allow" # xray permissions (required)
         Action:
@@ -131,6 +134,27 @@ functions:
           - dynamodb:PutItem
         Resource: arn:aws:dynamodb:${self:provider.region}:*:table/${self:provider.environment.ALBUMS_TABLE}
 
+  UpdateAlbumsImage:
+    handler: src/lambda/http/updateAlbumImage.handler
+    events:
+      - http:
+          method: post
+          path: albums/{albumId}/counter
+          cors: true
+          authorizer: Auth
+    iamRoleStatements:
+      - Effect: "Allow" # xray permissions (required)
+        Action:
+          - "xray:PutTraceSegments"
+          - "xray:PutTelemetryRecords"
+        Resource:
+          - "*"
+      - Effect: Allow
+        Action:
+          - dynamodb:PutItem
+          - dynamodb:GetItem
+        Resource: arn:aws:dynamodb:${self:provider.region}:*:table/${self:provider.environment.ALBUMS_TABLE}
+
   UploadImage:
     handler: src/lambda/http/uploadImage.handler
     events:
@@ -140,13 +164,18 @@ functions:
           cors: true
           authorizer: Auth
           documentation:
-            summary: create new Album 
+            summary: create new Album
             description: create new Alnum
             requestModels:
-              'application/json': UploadImage
+              "application/json": UploadImage
+      - http:
+          method: get
+          path: albums/{albumId}
+          cors: true
+          authorizer: Auth
 
     iamRoleStatements:
-      - Effect: "Allow" 
+      - Effect: "Allow"
         Action:
           - "xray:PutTraceSegments"
           - "xray:PutTelemetryRecords"
@@ -155,6 +184,7 @@ functions:
       - Effect: Allow
         Action:
           - dynamodb:GetItem
+          - dynamodb:PutItem
         Resource: arn:aws:dynamodb:${self:provider.region}:*:table/${self:provider.environment.ALBUMS_TABLE}
       - Effect: Allow
         Action:
@@ -165,7 +195,6 @@ functions:
           - s3:PutObject
         Resource: arn:aws:s3:::${self:provider.environment.IMAGES_S3_BUCKET}/*
 
-
   GetImages:
     handler: src/lambda/http/getImages.handler
     events:
@@ -175,7 +204,7 @@ functions:
           cors: true
           authorizer: Auth
     iamRoleStatements:
-      - Effect: "Allow" 
+      - Effect: "Allow"
         Action:
           - "xray:PutTraceSegments"
           - "xray:PutTelemetryRecords"
@@ -189,7 +218,6 @@ functions:
         Action:
           - dynamodb:GetItem
         Resource: arn:aws:dynamodb:${self:provider.region}:*:table/${self:provider.environment.ALBUMS_TABLE}
-
 
   GetPins:
     handler: src/lambda/http/getFavs.handler
@@ -200,7 +228,7 @@ functions:
           cors: true
           authorizer: Auth
     iamRoleStatements:
-      - Effect: "Allow" 
+      - Effect: "Allow"
         Action:
           - "xray:PutTraceSegments"
           - "xray:PutTelemetryRecords"
@@ -211,8 +239,6 @@ functions:
           - dynamodb:Query
         Resource: arn:aws:dynamodb:${self:provider.region}:*:table/${self:provider.environment.IMAGES_TABLE}
 
-
-
   GetAllImages:
     handler: src/lambda/http/getAllImages.handler
     events:
@@ -222,7 +248,7 @@ functions:
           cors: true
           authorizer: Auth
     iamRoleStatements:
-      - Effect: "Allow" 
+      - Effect: "Allow"
         Action:
           - "xray:PutTraceSegments"
           - "xray:PutTelemetryRecords"
@@ -230,10 +256,8 @@ functions:
           - "*"
       - Effect: Allow
         Action:
-          - dynamodb:query  
+          - dynamodb:query
         Resource: arn:aws:dynamodb:${self:provider.region}:*:table/${self:provider.environment.IMAGES_TABLE}
-
-
 
   GetAlbum:
     handler: src/lambda/http/getAlbum.handler
@@ -244,7 +268,7 @@ functions:
           cors: true
           authorizer: Auth
     iamRoleStatements:
-      - Effect: "Allow" 
+      - Effect: "Allow"
         Action:
           - "xray:PutTraceSegments"
           - "xray:PutTelemetryRecords"
@@ -254,8 +278,6 @@ functions:
         Action:
           - dynamodb:GetItem
         Resource: arn:aws:dynamodb:${self:provider.region}:*:table/${self:provider.environment.ALBUMS_TABLE}
-
-
 
   DeleteImage:
     handler: src/lambda/http/deleteImage.handler
@@ -280,8 +302,6 @@ functions:
         Action:
           - dynamodb:Query
         Resource: arn:aws:dynamodb:${self:provider.region}:*:table/${self:provider.environment.IMAGES_TABLE}/index/${self:provider.environment.IMAGE_ID_INDEX}
-
-
 
   DeleteAlbum:
     handler: src/lambda/http/deleteAlbum.handler
@@ -309,7 +329,6 @@ functions:
           - dynamodb:DeleteItem
         Resource: arn:aws:dynamodb:${self:provider.region}:*:table/${self:provider.environment.ALBUMS_TABLE}
 
-        
   PinImage:
     handler: src/lambda/http/pinImage.handler
     events:
@@ -319,7 +338,7 @@ functions:
           cors: true
           authorizer: Auth
     iamRoleStatements:
-      - Effect: "Allow" 
+      - Effect: "Allow"
         Action:
           - "xray:PutTraceSegments"
           - "xray:PutTelemetryRecords"
@@ -339,9 +358,9 @@ resources:
     RequestBodyValidator:
       Type: AWS::ApiGateway::RequestValidator
       Properties:
-        Name: 'request-body-validator'
+        Name: "request-body-validator"
         RestApiId:
-          Ref: 'ApiGatewayRestApi'
+          Ref: "ApiGatewayRestApi"
         ValidateRequestBody: true
         ValidateRequestParameters: false
     GatewayResponseDefault4XX:
@@ -371,7 +390,6 @@ resources:
         BillingMode: PAY_PER_REQUEST
         TableName: ${self:provider.environment.ALBUMS_TABLE}
 
-
     ImagesDynamoDBTable:
       Type: "AWS::DynamoDB::Table"
       Properties:
@@ -393,11 +411,10 @@ resources:
         GlobalSecondaryIndexes:
           - IndexName: ${self:provider.environment.IMAGE_ID_INDEX}
             KeySchema:
-            - AttributeName: imageId
-              KeyType: HASH
+              - AttributeName: imageId
+                KeyType: HASH
             Projection:
               ProjectionType: ALL
-
 
     AttachmentsBucket:
       Type: AWS::S3::Bucket
@@ -406,9 +423,9 @@ resources:
         CorsConfiguration:
           CorsRules:
             - AllowedOrigins:
-                - '*'
+                - "*"
               AllowedHeaders:
-                - '*'
+                - "*"
               AllowedMethods:
                 - GET
                 - PUT
@@ -417,17 +434,16 @@ resources:
                 - HEAD
               MaxAge: 3000
 
-              
     BucketPolicy:
       Type: AWS::S3::BucketPolicy
       Properties:
         PolicyDocument:
           Id: MyPolicy
-          Version: '2012-10-17'
+          Version: "2012-10-17"
           Statement:
             - Sid: PublicReadForGetBucketObjects
               Effect: Allow
-              Principal: '*'
-              Action: 's3:GetObject'
-              Resource: 'arn:aws:s3:::${self:provider.environment.IMAGES_S3_BUCKET}/*'
+              Principal: "*"
+              Action: "s3:GetObject"
+              Resource: "arn:aws:s3:::${self:provider.environment.IMAGES_S3_BUCKET}/*"
         Bucket: !Ref AttachmentsBucket

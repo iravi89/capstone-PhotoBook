@@ -4,4 +4,5 @@ export interface AlbumModel {
   description: string
   location:string
   timestamp:string
+  imageCount:number
 }

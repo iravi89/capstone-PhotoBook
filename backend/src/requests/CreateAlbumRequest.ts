@@ -3,5 +3,6 @@ export interface CreateAlbumInterface {
   description: string
   location: string
   private: boolean
+  imageCounter:number
 
 }

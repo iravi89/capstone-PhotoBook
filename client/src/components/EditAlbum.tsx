@@ -102,7 +102,7 @@ import { Album } from './Album'
 
 
     }catch (e) {
-        alert('Could not upload an image: ' + e.message)
+        alert('Could not Update Album: ' + e.message)
       } finally {
         this.setLoadingState(false)
       }
@@ -138,7 +138,7 @@ import { Album } from './Album'
                             <Input
                                 type='text'
                                 name='name'
-                                placeholder='Add a team name'
+                                placeholder='Album name'
                                 value={this.state.album_name}
                                 onChange={this.handleNameChange}
                             />
@@ -149,7 +149,7 @@ import { Album } from './Album'
                             <Input
                                 type='text'
                                 name='Location'
-                                placeholder='Add a sport (baseball, hockey, volleyball, football, ...)'
+                                placeholder='Add Location'
                                 value={this.state.location}
                                 onChange={this.handleLocationChange}
                             />
@@ -160,7 +160,7 @@ import { Album } from './Album'
                             <Input
                                 type='text'
                                 name='Description'
-                                placeholder='Add a season (1999, 2003-2004)'
+                                placeholder='Add Story'
                                 value={this.state.des}
                                 onChange={this.handleDescriptionChange}
                             />

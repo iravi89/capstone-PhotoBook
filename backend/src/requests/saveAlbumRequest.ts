@@ -4,5 +4,6 @@ export interface saveAlbumInterface {
     location: string
     private: boolean
     albumId:string
+    imageCount:number
   
   }

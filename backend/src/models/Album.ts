@@ -6,4 +6,5 @@ export interface Album {
   private: boolean
   timestamp: string
   location: string
+  imgCnt:number
 }

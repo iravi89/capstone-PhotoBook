@@ -118,6 +118,20 @@ export async function editAlbum(albumId: string, idToken: string,patch:UpdateAlb
   // })
 }
 
+export async function updateImageCounter(albumId: string, idToken: string): 
+
+  Promise<void> {
+
+    console.log('ambum id:',albumId)
+    console.log(' Token:',idToken)
+    const reply = await Axios.post(`${apiEndpoint}/albums/${albumId}/counter`,  {
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${idToken}`
+      }
+    })
+  }
+
 export async function saveAlbum(albumId: string, idToken: string,patch:UpdateAlbumInfo): 
 
   Promise<void> {

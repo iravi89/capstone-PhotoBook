@@ -4,6 +4,7 @@ import { createImage, uploadFile } from '../api/images-api'
 import Auth from '../auth/Auth'
 import { Redirect } from 'react-router-dom'
 import { runInThisContext } from 'vm'
+import { updateImageCounter } from '../api/Albums-api'
 
 enum UploadState {
   NoUpload,
@@ -71,6 +72,7 @@ export class CreateImage extends React.PureComponent<
 
       this.setUploadState(UploadState.UploadingFile)
       await uploadFile(uploadInfo.uploadUrl, this.state.file)
+      //await updateImageCounter(this.props.match.params.albumId,this.props.auth.getIdToken())
 
       alert('Image uploaded!')
       this.setRedirect(true)
