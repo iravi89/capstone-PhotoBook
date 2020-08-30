@@ -228,7 +228,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/serverless-album-1/dev/1598709428737-2020-08-29T13:57:08.737Z/serverless-album-1.zip"
+          "S3Key": "serverless/serverless-album-1/dev/1598776144917-2020-08-30T08:29:04.917Z/serverless-album-1.zip"
         },
         "FunctionName": "serverless-album-1-dev-Auth",
         "Handler": "src/lambda/auth/auth0Authorizer.handler",
@@ -258,14 +258,14 @@
         "AuthLogGroup"
       ]
     },
-    "AuthLambdaVersionZ73qi3HoRkmnlSGG9756v0kUaWnx7qrNulV9ys8G0rU": {
+    "AuthLambdaVersion4PztiyhKjUt6UTsJMn6LMxdSYqY4yPl5b6rUOmgE": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "AuthLambdaFunction"
         },
-        "CodeSha256": "TKrk2ZSD+EwmzE2LIuxJMt4H6Myk4QQmhUdFidRgNyA="
+        "CodeSha256": "Aly7vtbUQIAHxb1GJzeUTchsVoO4+6gMLa8W7KQVkwE="
       }
     },
     "CreateAlbumLambdaFunction": {
@@ -275,7 +275,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/serverless-album-1/dev/1598709428737-2020-08-29T13:57:08.737Z/serverless-album-1.zip"
+          "S3Key": "serverless/serverless-album-1/dev/1598776144917-2020-08-30T08:29:04.917Z/serverless-album-1.zip"
         },
         "FunctionName": "serverless-album-1-dev-CreateAlbum",
         "Handler": "src/lambda/http/createAlbum.handler",
@@ -306,14 +306,14 @@
         "CreateAlbumLogGroup"
       ]
     },
-    "CreateAlbumLambdaVersionJGZ8suBXedSTzpbwXhjOgNtWyXyNR62jDKAqT28eR0": {
+    "CreateAlbumLambdaVersioniV5p2be6usGperJxtQ4I57BNa86BXjp0W1wDE11iCBE": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "CreateAlbumLambdaFunction"
         },
-        "CodeSha256": "TKrk2ZSD+EwmzE2LIuxJMt4H6Myk4QQmhUdFidRgNyA="
+        "CodeSha256": "Aly7vtbUQIAHxb1GJzeUTchsVoO4+6gMLa8W7KQVkwE="
       }
     },
     "GetAlbumsLambdaFunction": {
@@ -323,7 +323,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/serverless-album-1/dev/1598709428737-2020-08-29T13:57:08.737Z/serverless-album-1.zip"
+          "S3Key": "serverless/serverless-album-1/dev/1598776144917-2020-08-30T08:29:04.917Z/serverless-album-1.zip"
         },
         "FunctionName": "serverless-album-1-dev-GetAlbums",
         "Handler": "src/lambda/http/getAllAlbum.handler",
@@ -354,14 +354,14 @@
         "GetAlbumsLogGroup"
       ]
     },
-    "GetAlbumsLambdaVersion5edRrRtJn3xRJyh5AiBfwpmvwTnmbIXGkpr0lCtDAgw": {
+    "GetAlbumsLambdaVersionWp3UUPvaSVKDLMHvsyOK2eVB9K8ZcXTrdvRjsaOmyM": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "GetAlbumsLambdaFunction"
         },
-        "CodeSha256": "TKrk2ZSD+EwmzE2LIuxJMt4H6Myk4QQmhUdFidRgNyA="
+        "CodeSha256": "Aly7vtbUQIAHxb1GJzeUTchsVoO4+6gMLa8W7KQVkwE="
       }
     },
     "SaveAlbumsLambdaFunction": {
@@ -371,7 +371,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/serverless-album-1/dev/1598709428737-2020-08-29T13:57:08.737Z/serverless-album-1.zip"
+          "S3Key": "serverless/serverless-album-1/dev/1598776144917-2020-08-30T08:29:04.917Z/serverless-album-1.zip"
         },
         "FunctionName": "serverless-album-1-dev-SaveAlbums",
         "Handler": "src/lambda/http/saveAlbum.handler",
@@ -402,14 +402,14 @@
         "SaveAlbumsLogGroup"
       ]
     },
-    "SaveAlbumsLambdaVersionZ86OIytoXlgCTdB0iolQ0dNBlOcqTGWyyChNprjRBo": {
+    "SaveAlbumsLambdaVersionWLzZ9370FlJbvNvST11bYkQaTMnhFpk3J8ZdGP5k": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "SaveAlbumsLambdaFunction"
         },
-        "CodeSha256": "TKrk2ZSD+EwmzE2LIuxJMt4H6Myk4QQmhUdFidRgNyA="
+        "CodeSha256": "Aly7vtbUQIAHxb1GJzeUTchsVoO4+6gMLa8W7KQVkwE="
       }
     },
     "UpdateAlbumsImageLambdaFunction": {
@@ -419,7 +419,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/serverless-album-1/dev/1598709428737-2020-08-29T13:57:08.737Z/serverless-album-1.zip"
+          "S3Key": "serverless/serverless-album-1/dev/1598776144917-2020-08-30T08:29:04.917Z/serverless-album-1.zip"
         },
         "FunctionName": "serverless-album-1-dev-UpdateAlbumsImage",
         "Handler": "src/lambda/http/updateAlbumImage.handler",
@@ -450,14 +450,14 @@
         "UpdateAlbumsImageLogGroup"
       ]
     },
-    "UpdateAlbumsImageLambdaVersionuioAWCtatDkaD750ygUMzfDR9nKKtgP4xdxJ45GLM": {
+    "UpdateAlbumsImageLambdaVersion2DHmLo5TrS8X722sxvirB8oX3pQrVTZfsXdgsm7jreU": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "UpdateAlbumsImageLambdaFunction"
         },
-        "CodeSha256": "TKrk2ZSD+EwmzE2LIuxJMt4H6Myk4QQmhUdFidRgNyA="
+        "CodeSha256": "Aly7vtbUQIAHxb1GJzeUTchsVoO4+6gMLa8W7KQVkwE="
       }
     },
     "UploadImageLambdaFunction": {
@@ -467,7 +467,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/serverless-album-1/dev/1598709428737-2020-08-29T13:57:08.737Z/serverless-album-1.zip"
+          "S3Key": "serverless/serverless-album-1/dev/1598776144917-2020-08-30T08:29:04.917Z/serverless-album-1.zip"
         },
         "FunctionName": "serverless-album-1-dev-UploadImage",
         "Handler": "src/lambda/http/uploadImage.handler",
@@ -498,14 +498,14 @@
         "UploadImageLogGroup"
       ]
     },
-    "UploadImageLambdaVersionBqPPVjjX4ijVRQ9pJvZJlNp75aWPASMrUOAqTG0E": {
+    "UploadImageLambdaVersionVmsPX6W6e2jxWR1c1bMSRy7MXFFP2Kngiy982Fk": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "UploadImageLambdaFunction"
         },
-        "CodeSha256": "TKrk2ZSD+EwmzE2LIuxJMt4H6Myk4QQmhUdFidRgNyA="
+        "CodeSha256": "Aly7vtbUQIAHxb1GJzeUTchsVoO4+6gMLa8W7KQVkwE="
       }
     },
     "GetImagesLambdaFunction": {
@@ -515,7 +515,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/serverless-album-1/dev/1598709428737-2020-08-29T13:57:08.737Z/serverless-album-1.zip"
+          "S3Key": "serverless/serverless-album-1/dev/1598776144917-2020-08-30T08:29:04.917Z/serverless-album-1.zip"
         },
         "FunctionName": "serverless-album-1-dev-GetImages",
         "Handler": "src/lambda/http/getImages.handler",
@@ -546,14 +546,14 @@
         "GetImagesLogGroup"
       ]
     },
-    "GetImagesLambdaVersionKq3mm5W3nJvqpykn2LTps1P8Xh1baSnLU0RcI": {
+    "GetImagesLambdaVersionoNyLRwWTbiwhcWi5otVMXWF1oc3CZcGhNx72UM7Xc": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "GetImagesLambdaFunction"
         },
-        "CodeSha256": "TKrk2ZSD+EwmzE2LIuxJMt4H6Myk4QQmhUdFidRgNyA="
+        "CodeSha256": "Aly7vtbUQIAHxb1GJzeUTchsVoO4+6gMLa8W7KQVkwE="
       }
     },
     "GetPinsLambdaFunction": {
@@ -563,7 +563,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/serverless-album-1/dev/1598709428737-2020-08-29T13:57:08.737Z/serverless-album-1.zip"
+          "S3Key": "serverless/serverless-album-1/dev/1598776144917-2020-08-30T08:29:04.917Z/serverless-album-1.zip"
         },
         "FunctionName": "serverless-album-1-dev-GetPins",
         "Handler": "src/lambda/http/getFavs.handler",
@@ -594,14 +594,14 @@
         "GetPinsLogGroup"
       ]
     },
-    "GetPinsLambdaVersionivAsueGR5pHcvEsnRhfORnPKss7e5u1O9Q3pNDdMBc": {
+    "GetPinsLambdaVersionxgwoRp1Dht2Sb6D56FpIH1C8SUtIZOw5QnY6SrI51Yo": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "GetPinsLambdaFunction"
         },
-        "CodeSha256": "TKrk2ZSD+EwmzE2LIuxJMt4H6Myk4QQmhUdFidRgNyA="
+        "CodeSha256": "Aly7vtbUQIAHxb1GJzeUTchsVoO4+6gMLa8W7KQVkwE="
       }
     },
     "GetAllImagesLambdaFunction": {
@@ -611,7 +611,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/serverless-album-1/dev/1598709428737-2020-08-29T13:57:08.737Z/serverless-album-1.zip"
+          "S3Key": "serverless/serverless-album-1/dev/1598776144917-2020-08-30T08:29:04.917Z/serverless-album-1.zip"
         },
         "FunctionName": "serverless-album-1-dev-GetAllImages",
         "Handler": "src/lambda/http/getAllImages.handler",
@@ -642,14 +642,14 @@
         "GetAllImagesLogGroup"
       ]
     },
-    "GetAllImagesLambdaVersionSHEbec8MRPWUY0jhg7BmgKeEjMx5gd5LirMhwXQCvw": {
+    "GetAllImagesLambdaVersionHQMovqCygiXpR0K5oybe7nH1okroSCRhngXBIYWXM": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "GetAllImagesLambdaFunction"
         },
-        "CodeSha256": "TKrk2ZSD+EwmzE2LIuxJMt4H6Myk4QQmhUdFidRgNyA="
+        "CodeSha256": "Aly7vtbUQIAHxb1GJzeUTchsVoO4+6gMLa8W7KQVkwE="
       }
     },
     "GetAlbumLambdaFunction": {
@@ -659,7 +659,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/serverless-album-1/dev/1598709428737-2020-08-29T13:57:08.737Z/serverless-album-1.zip"
+          "S3Key": "serverless/serverless-album-1/dev/1598776144917-2020-08-30T08:29:04.917Z/serverless-album-1.zip"
         },
         "FunctionName": "serverless-album-1-dev-GetAlbum",
         "Handler": "src/lambda/http/getAlbum.handler",
@@ -690,14 +690,14 @@
         "GetAlbumLogGroup"
       ]
     },
-    "GetAlbumLambdaVersionyVPEeRYzvVdxjbGUaYLRz3gE3PVkaeDFVenddvpx0GA": {
+    "GetAlbumLambdaVersionWe0iVpz2wtu7BaV7yckmJis91uiE46VKXrI4Q4SbGG0": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "GetAlbumLambdaFunction"
         },
-        "CodeSha256": "TKrk2ZSD+EwmzE2LIuxJMt4H6Myk4QQmhUdFidRgNyA="
+        "CodeSha256": "Aly7vtbUQIAHxb1GJzeUTchsVoO4+6gMLa8W7KQVkwE="
       }
     },
     "DeleteImageLambdaFunction": {
@@ -707,7 +707,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/serverless-album-1/dev/1598709428737-2020-08-29T13:57:08.737Z/serverless-album-1.zip"
+          "S3Key": "serverless/serverless-album-1/dev/1598776144917-2020-08-30T08:29:04.917Z/serverless-album-1.zip"
         },
         "FunctionName": "serverless-album-1-dev-DeleteImage",
         "Handler": "src/lambda/http/deleteImage.handler",
@@ -738,14 +738,14 @@
         "DeleteImageLogGroup"
       ]
     },
-    "DeleteImageLambdaVersion7o6GwFdUfGHaguwABgLINJVbKQwQpwxvcBGCtN2YQ": {
+    "DeleteImageLambdaVersionThXTYLRC3HTrcmHDC6cNhvZBCdOHyoN0cR0cV8": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "DeleteImageLambdaFunction"
         },
-        "CodeSha256": "TKrk2ZSD+EwmzE2LIuxJMt4H6Myk4QQmhUdFidRgNyA="
+        "CodeSha256": "Aly7vtbUQIAHxb1GJzeUTchsVoO4+6gMLa8W7KQVkwE="
       }
     },
     "DeleteAlbumLambdaFunction": {
@@ -755,7 +755,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/serverless-album-1/dev/1598709428737-2020-08-29T13:57:08.737Z/serverless-album-1.zip"
+          "S3Key": "serverless/serverless-album-1/dev/1598776144917-2020-08-30T08:29:04.917Z/serverless-album-1.zip"
         },
         "FunctionName": "serverless-album-1-dev-DeleteAlbum",
         "Handler": "src/lambda/http/deleteAlbum.handler",
@@ -786,14 +786,14 @@
         "DeleteAlbumLogGroup"
       ]
     },
-    "DeleteAlbumLambdaVersion0BgtRDgSfC79mzNAuZvLbSfXz2esuKYgMKqPQyiMJaY": {
+    "DeleteAlbumLambdaVersionRxfrQ4Ta8P8blsumDrJyytChtmkOb54LNzMKw5f2o": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "DeleteAlbumLambdaFunction"
         },
-        "CodeSha256": "TKrk2ZSD+EwmzE2LIuxJMt4H6Myk4QQmhUdFidRgNyA="
+        "CodeSha256": "Aly7vtbUQIAHxb1GJzeUTchsVoO4+6gMLa8W7KQVkwE="
       }
     },
     "PinImageLambdaFunction": {
@@ -803,7 +803,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/serverless-album-1/dev/1598709428737-2020-08-29T13:57:08.737Z/serverless-album-1.zip"
+          "S3Key": "serverless/serverless-album-1/dev/1598776144917-2020-08-30T08:29:04.917Z/serverless-album-1.zip"
         },
         "FunctionName": "serverless-album-1-dev-PinImage",
         "Handler": "src/lambda/http/pinImage.handler",
@@ -834,14 +834,14 @@
         "PinImageLogGroup"
       ]
     },
-    "PinImageLambdaVersionT7DhEXGnCbaAx37Zq8uoANvQ0GYHExgHZMkLBVIuAXk": {
+    "PinImageLambdaVersionzFVXT8UDefLOvQOIb86NblAHIcE3hinQqvDgDQEXhEg": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "PinImageLambdaFunction"
         },
-        "CodeSha256": "TKrk2ZSD+EwmzE2LIuxJMt4H6Myk4QQmhUdFidRgNyA="
+        "CodeSha256": "Aly7vtbUQIAHxb1GJzeUTchsVoO4+6gMLa8W7KQVkwE="
       }
     },
     "ApiGatewayRestApi": {
@@ -1097,51 +1097,6 @@
         }
       }
     },
-    "ApiGatewayMethodAlbumsAlbumidVarImagesOptions": {
-      "Type": "AWS::ApiGateway::Method",
-      "Properties": {
-        "AuthorizationType": "NONE",
-        "HttpMethod": "OPTIONS",
-        "MethodResponses": [
-          {
-            "StatusCode": "200",
-            "ResponseParameters": {
-              "method.response.header.Access-Control-Allow-Origin": true,
-              "method.response.header.Access-Control-Allow-Headers": true,
-              "method.response.header.Access-Control-Allow-Methods": true
-            },
-            "ResponseModels": {}
-          }
-        ],
-        "RequestParameters": {},
-        "Integration": {
-          "Type": "MOCK",
-          "RequestTemplates": {
-            "application/json": "{statusCode:200}"
-          },
-          "ContentHandling": "CONVERT_TO_TEXT",
-          "IntegrationResponses": [
-            {
-              "StatusCode": "200",
-              "ResponseParameters": {
-                "method.response.header.Access-Control-Allow-Origin": "'*'",
-                "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token,X-Amz-User-Agent'",
-                "method.response.header.Access-Control-Allow-Methods": "'OPTIONS,GET,POST'"
-              },
-              "ResponseTemplates": {
-                "application/json": "#set($origin = $input.params(\"Origin\"))\n#if($origin == \"\") #set($origin = $input.params(\"origin\")) #end\n#if($origin.matches(\".+\")) #set($context.responseOverride.header.Access-Control-Allow-Origin = $origin) #end"
-              }
-            }
-          ]
-        },
-        "ResourceId": {
-          "Ref": "ApiGatewayResourceAlbumsAlbumidVarImages"
-        },
-        "RestApiId": {
-          "Ref": "ApiGatewayRestApi"
-        }
-      }
-    },
     "ApiGatewayMethodAlbumsAlbumidVarOptions": {
       "Type": "AWS::ApiGateway::Method",
       "Properties": {
@@ -1181,6 +1136,51 @@
         },
         "ResourceId": {
           "Ref": "ApiGatewayResourceAlbumsAlbumidVar"
+        },
+        "RestApiId": {
+          "Ref": "ApiGatewayRestApi"
+        }
+      }
+    },
+    "ApiGatewayMethodAlbumsAlbumidVarImagesOptions": {
+      "Type": "AWS::ApiGateway::Method",
+      "Properties": {
+        "AuthorizationType": "NONE",
+        "HttpMethod": "OPTIONS",
+        "MethodResponses": [
+          {
+            "StatusCode": "200",
+            "ResponseParameters": {
+              "method.response.header.Access-Control-Allow-Origin": true,
+              "method.response.header.Access-Control-Allow-Headers": true,
+              "method.response.header.Access-Control-Allow-Methods": true
+            },
+            "ResponseModels": {}
+          }
+        ],
+        "RequestParameters": {},
+        "Integration": {
+          "Type": "MOCK",
+          "RequestTemplates": {
+            "application/json": "{statusCode:200}"
+          },
+          "ContentHandling": "CONVERT_TO_TEXT",
+          "IntegrationResponses": [
+            {
+              "StatusCode": "200",
+              "ResponseParameters": {
+                "method.response.header.Access-Control-Allow-Origin": "'*'",
+                "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token,X-Amz-User-Agent'",
+                "method.response.header.Access-Control-Allow-Methods": "'OPTIONS,GET,POST'"
+              },
+              "ResponseTemplates": {
+                "application/json": "#set($origin = $input.params(\"Origin\"))\n#if($origin == \"\") #set($origin = $input.params(\"origin\")) #end\n#if($origin.matches(\".+\")) #set($context.responseOverride.header.Access-Control-Allow-Origin = $origin) #end"
+              }
+            }
+          ]
+        },
+        "ResourceId": {
+          "Ref": "ApiGatewayResourceAlbumsAlbumidVarImages"
         },
         "RestApiId": {
           "Ref": "ApiGatewayRestApi"
@@ -1521,6 +1521,53 @@
       },
       "DependsOn": "AuthApiGatewayAuthorizer"
     },
+    "ApiGatewayMethodAlbumsAlbumidVarGet": {
+      "Type": "AWS::ApiGateway::Method",
+      "Properties": {
+        "HttpMethod": "GET",
+        "RequestParameters": {},
+        "ResourceId": {
+          "Ref": "ApiGatewayResourceAlbumsAlbumidVar"
+        },
+        "RestApiId": {
+          "Ref": "ApiGatewayRestApi"
+        },
+        "ApiKeyRequired": false,
+        "AuthorizationType": "CUSTOM",
+        "AuthorizerId": {
+          "Ref": "AuthApiGatewayAuthorizer"
+        },
+        "Integration": {
+          "IntegrationHttpMethod": "POST",
+          "Type": "AWS_PROXY",
+          "Uri": {
+            "Fn::Join": [
+              "",
+              [
+                "arn:",
+                {
+                  "Ref": "AWS::Partition"
+                },
+                ":apigateway:",
+                {
+                  "Ref": "AWS::Region"
+                },
+                ":lambda:path/2015-03-31/functions/",
+                {
+                  "Fn::GetAtt": [
+                    "GetAlbumLambdaFunction",
+                    "Arn"
+                  ]
+                },
+                "/invocations"
+              ]
+            ]
+          }
+        },
+        "MethodResponses": []
+      },
+      "DependsOn": "AuthApiGatewayAuthorizer"
+    },
     "ApiGatewayMethodAlbumsAlbumidVarImagesPost": {
       "Type": "AWS::ApiGateway::Method",
       "Properties": {
@@ -1572,53 +1619,6 @@
       "DependsOn": [
         "UploadImageModel"
       ]
-    },
-    "ApiGatewayMethodAlbumsAlbumidVarGet": {
-      "Type": "AWS::ApiGateway::Method",
-      "Properties": {
-        "HttpMethod": "GET",
-        "RequestParameters": {},
-        "ResourceId": {
-          "Ref": "ApiGatewayResourceAlbumsAlbumidVar"
-        },
-        "RestApiId": {
-          "Ref": "ApiGatewayRestApi"
-        },
-        "ApiKeyRequired": false,
-        "AuthorizationType": "CUSTOM",
-        "AuthorizerId": {
-          "Ref": "AuthApiGatewayAuthorizer"
-        },
-        "Integration": {
-          "IntegrationHttpMethod": "POST",
-          "Type": "AWS_PROXY",
-          "Uri": {
-            "Fn::Join": [
-              "",
-              [
-                "arn:",
-                {
-                  "Ref": "AWS::Partition"
-                },
-                ":apigateway:",
-                {
-                  "Ref": "AWS::Region"
-                },
-                ":lambda:path/2015-03-31/functions/",
-                {
-                  "Fn::GetAtt": [
-                    "GetAlbumLambdaFunction",
-                    "Arn"
-                  ]
-                },
-                "/invocations"
-              ]
-            ]
-          }
-        },
-        "MethodResponses": []
-      },
-      "DependsOn": "AuthApiGatewayAuthorizer"
     },
     "ApiGatewayMethodAlbumsAlbumidVarImagesGet": {
       "Type": "AWS::ApiGateway::Method",
@@ -1936,7 +1936,7 @@
         "Type": "TOKEN"
       }
     },
-    "ApiGatewayDeployment1598709405361": {
+    "ApiGatewayDeployment1598776106687": {
       "Type": "AWS::ApiGateway::Deployment",
       "Properties": {
         "RestApiId": {
@@ -1948,8 +1948,8 @@
         "ApiGatewayMethodAlbumsOptions",
         "ApiGatewayMethodAlbumsAlbumidVarSaveOptions",
         "ApiGatewayMethodAlbumsAlbumidVarCounterOptions",
-        "ApiGatewayMethodAlbumsAlbumidVarImagesOptions",
         "ApiGatewayMethodAlbumsAlbumidVarOptions",
+        "ApiGatewayMethodAlbumsAlbumidVarImagesOptions",
         "ApiGatewayMethodPinsOptions",
         "ApiGatewayMethodImagesOptions",
         "ApiGatewayMethodImagesImageidVarOptions",
@@ -1957,6 +1957,7 @@
         "ApiGatewayMethodAlbumsGet",
         "ApiGatewayMethodAlbumsAlbumidVarSavePost",
         "ApiGatewayMethodAlbumsAlbumidVarCounterPost",
+        "ApiGatewayMethodAlbumsAlbumidVarGet",
         "ApiGatewayMethodAlbumsAlbumidVarImagesPost",
         "ApiGatewayMethodAlbumsAlbumidVarGet",
         "ApiGatewayMethodAlbumsAlbumidVarImagesGet",
@@ -2512,6 +2513,30 @@
         },
         "ContentType": "application/json",
         "Name": "SaveAlbums",
+        "Schema": {
+          "$schema": "http://json-schema.org/draft-04/schema#",
+          "title": "image",
+          "type": "object",
+          "properties": {
+            "title": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "title"
+          ],
+          "additionalProperties": false
+        }
+      }
+    },
+    "UpdateAlbumsImageModel": {
+      "Type": "AWS::ApiGateway::Model",
+      "Properties": {
+        "RestApiId": {
+          "Ref": "ApiGatewayRestApi"
+        },
+        "ContentType": "application/json",
+        "Name": "UpdateAlbumsImage",
         "Schema": {
           "$schema": "http://json-schema.org/draft-04/schema#",
           "title": "image",
@@ -3748,79 +3773,79 @@
     "AuthLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "AuthLambdaVersionZ73qi3HoRkmnlSGG9756v0kUaWnx7qrNulV9ys8G0rU"
+        "Ref": "AuthLambdaVersion4PztiyhKjUt6UTsJMn6LMxdSYqY4yPl5b6rUOmgE"
       }
     },
     "CreateAlbumLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "CreateAlbumLambdaVersionJGZ8suBXedSTzpbwXhjOgNtWyXyNR62jDKAqT28eR0"
+        "Ref": "CreateAlbumLambdaVersioniV5p2be6usGperJxtQ4I57BNa86BXjp0W1wDE11iCBE"
       }
     },
     "GetAlbumsLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "GetAlbumsLambdaVersion5edRrRtJn3xRJyh5AiBfwpmvwTnmbIXGkpr0lCtDAgw"
+        "Ref": "GetAlbumsLambdaVersionWp3UUPvaSVKDLMHvsyOK2eVB9K8ZcXTrdvRjsaOmyM"
       }
     },
     "SaveAlbumsLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "SaveAlbumsLambdaVersionZ86OIytoXlgCTdB0iolQ0dNBlOcqTGWyyChNprjRBo"
+        "Ref": "SaveAlbumsLambdaVersionWLzZ9370FlJbvNvST11bYkQaTMnhFpk3J8ZdGP5k"
       }
     },
     "UpdateAlbumsImageLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "UpdateAlbumsImageLambdaVersionuioAWCtatDkaD750ygUMzfDR9nKKtgP4xdxJ45GLM"
+        "Ref": "UpdateAlbumsImageLambdaVersion2DHmLo5TrS8X722sxvirB8oX3pQrVTZfsXdgsm7jreU"
       }
     },
     "UploadImageLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "UploadImageLambdaVersionBqPPVjjX4ijVRQ9pJvZJlNp75aWPASMrUOAqTG0E"
+        "Ref": "UploadImageLambdaVersionVmsPX6W6e2jxWR1c1bMSRy7MXFFP2Kngiy982Fk"
       }
     },
     "GetImagesLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "GetImagesLambdaVersionKq3mm5W3nJvqpykn2LTps1P8Xh1baSnLU0RcI"
+        "Ref": "GetImagesLambdaVersionoNyLRwWTbiwhcWi5otVMXWF1oc3CZcGhNx72UM7Xc"
       }
     },
     "GetPinsLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "GetPinsLambdaVersionivAsueGR5pHcvEsnRhfORnPKss7e5u1O9Q3pNDdMBc"
+        "Ref": "GetPinsLambdaVersionxgwoRp1Dht2Sb6D56FpIH1C8SUtIZOw5QnY6SrI51Yo"
       }
     },
     "GetAllImagesLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "GetAllImagesLambdaVersionSHEbec8MRPWUY0jhg7BmgKeEjMx5gd5LirMhwXQCvw"
+        "Ref": "GetAllImagesLambdaVersionHQMovqCygiXpR0K5oybe7nH1okroSCRhngXBIYWXM"
       }
     },
     "GetAlbumLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "GetAlbumLambdaVersionyVPEeRYzvVdxjbGUaYLRz3gE3PVkaeDFVenddvpx0GA"
+        "Ref": "GetAlbumLambdaVersionWe0iVpz2wtu7BaV7yckmJis91uiE46VKXrI4Q4SbGG0"
       }
     },
     "DeleteImageLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "DeleteImageLambdaVersion7o6GwFdUfGHaguwABgLINJVbKQwQpwxvcBGCtN2YQ"
+        "Ref": "DeleteImageLambdaVersionThXTYLRC3HTrcmHDC6cNhvZBCdOHyoN0cR0cV8"
       }
     },
     "DeleteAlbumLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "DeleteAlbumLambdaVersion0BgtRDgSfC79mzNAuZvLbSfXz2esuKYgMKqPQyiMJaY"
+        "Ref": "DeleteAlbumLambdaVersionRxfrQ4Ta8P8blsumDrJyytChtmkOb54LNzMKw5f2o"
       }
     },
     "PinImageLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "PinImageLambdaVersionT7DhEXGnCbaAx37Zq8uoANvQ0GYHExgHZMkLBVIuAXk"
+        "Ref": "PinImageLambdaVersionzFVXT8UDefLOvQOIb86NblAHIcE3hinQqvDgDQEXhEg"
       }
     },
     "ServiceEndpoint": {

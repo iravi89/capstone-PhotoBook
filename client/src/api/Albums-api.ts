@@ -130,6 +130,8 @@ export async function updateImageCounter(albumId: string, idToken: string):
         'Authorization': `Bearer ${idToken}`
       }
     })
+
+    console.log('reply:',reply);
   }
 
 export async function saveAlbum(albumId: string, idToken: string,patch:UpdateAlbumInfo): 

@@ -11,6 +11,7 @@ import { CreateAlbumInterface } from '../../requests/CreateAlbumRequest'
 const logger = createLogger('Albumlogs')
 export const handler: APIGatewayProxyHandler = async (event: APIGatewayProxyEvent): Promise<APIGatewayProxyResult> => {
   console.log('Processing event: ', event)
+  logger.info('image counter updated start')
   const albumId = event.pathParameters.albumId
   const authHeader = event.headers['Authorization']
   const jwtToken = getUserById(authHeader)

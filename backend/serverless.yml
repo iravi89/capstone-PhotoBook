@@ -28,6 +28,9 @@ custom:
       - name: SaveAlbums
         contentType: application/json
         schema: ${file(src/model/json-schema/create-image-request.json)}
+      - name: UpdateAlbumsImage
+        contentType: application/json
+        schema: ${file(src/model/json-schema/create-image-request.json)}
 
 
 # Add the serverless-webpack plugin
@@ -140,6 +143,11 @@ functions:
       - http:
           method: post
           path: albums/{albumId}/counter
+          cors: true
+          authorizer: Auth
+      - http:
+          method: get
+          path: albums/{albumId}
           cors: true
           authorizer: Auth
     iamRoleStatements:

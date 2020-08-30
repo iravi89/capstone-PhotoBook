@@ -72,7 +72,7 @@ export class CreateImage extends React.PureComponent<
 
       this.setUploadState(UploadState.UploadingFile)
       await uploadFile(uploadInfo.uploadUrl, this.state.file)
-      //await updateImageCounter(this.props.match.params.albumId,this.props.auth.getIdToken())
+      await updateImageCounter(this.props.match.params.albumId,this.props.auth.getIdToken())
 
       alert('Image uploaded!')
       this.setRedirect(true)
