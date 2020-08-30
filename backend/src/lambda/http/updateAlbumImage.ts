@@ -18,6 +18,7 @@ export const handler: APIGatewayProxyHandler = async (event: APIGatewayProxyEven
   const jwtToken = getUserById(authHeader)
 
    const tt = await getAlbum(albumId,jwtToken)
+   logger.info('Name:',tt.name)
    let request : CreateAlbumInterface
    request.name = tt.name
    request.description = tt.description

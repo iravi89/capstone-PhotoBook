@@ -1,0 +1,14 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "title": "album",
+    "type": "object",
+    "properties": {
+      "imgCnt": {
+        "type": "number"
+      }
+    },
+    "required": [
+      "imgCnt"
+    ],
+    "additionalProperties": false
+  }

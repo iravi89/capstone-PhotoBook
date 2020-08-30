@@ -16,7 +16,7 @@ custom:
     api:
       info:
         version: v1.0.0
-        title: ToDos API
+        title: Album API
         description: serverless api for album creation application
     models:
       - name: CreateAlbum
@@ -30,7 +30,7 @@ custom:
         schema: ${file(src/model/json-schema/create-image-request.json)}
       - name: UpdateAlbumsImage
         contentType: application/json
-        schema: ${file(src/model/json-schema/create-image-request.json)}
+        schema: ${file(src/model/json-schema/update-album-request.json)}
 
 
 # Add the serverless-webpack plugin

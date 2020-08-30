@@ -38,7 +38,7 @@ export class ImagesList extends React.PureComponent<
   onImageDelete = async (imageId: string) => {
     try {
       await deleteImage(imageId, this.props.auth.getIdToken())
-      //await updateImageCounter(this.props.match.params.albumId,this.props.auth.getIdToken(),-1)
+      await updateImageCounter(this.props.match.params.albumId,this.props.auth.getIdToken(),-1)
       this.setState({
         images: this.state.images.filter(image => image.imageId != imageId)
       })
