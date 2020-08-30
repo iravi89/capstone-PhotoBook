@@ -145,6 +145,11 @@ functions:
           path: albums/{albumId}/counter
           cors: true
           authorizer: Auth
+          documentation:
+            summary: create new Album
+            description: create new Alnum
+            requestModels:
+              "application/json": UpdateAlbumsImage
       - http:
           method: get
           path: albums/{albumId}

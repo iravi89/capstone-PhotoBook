@@ -15,16 +15,9 @@ export async function getAlbums(idToken: string): Promise<AlbumModel[]> {
       'Authorization': `Bearer ${idToken}`
     },
   })
-  // const response = await fetch(`${apiEndpoint}/albums`, {
-  //   headers: {
-  //     'Content-Type': 'application/json',
-  //     'Authorization': `Bearer ${idToken}`
-  //   },
-  // })
 
-  //const result = await response.json()
 
-  return response.data.items//result.items
+  return response.data.items
 }
 
 export async function getAlbum(albumId: string, idToken: string): Promise<AlbumModel> {
@@ -39,16 +32,8 @@ export async function getAlbum(albumId: string, idToken: string): Promise<AlbumM
     },
   })
   
-  // await fetch(`${apiEndpoint}/albums/${albumId}`, {
-  //   headers: {
-  //     'Content-Type': 'application/json',
-  //     'Authorization': `Bearer ${idToken}`
-  //   },
-  // })
-  // const result = await response.json()
-  // console.log(JSON.stringify(result))
 
-  return response.data.album//result.album
+  return response.data.album
 }
 
 export async function createAlbum(
@@ -63,21 +48,8 @@ export async function createAlbum(
       'Authorization': `Bearer ${idToken}`
     }
   })
-  // await fetch(`${apiEndpoint}/albums`, {
-  //   method: 'POST',
-  //   headers: {
-  //     'Content-Type': 'application/json',
-  //     'Authorization': `Bearer ${idToken}`
-  //   },
-  //   body:JSON.stringify({//test
-  //     name: newAlbum.name,
-  //     location:newAlbum.location,
-  //     description: newAlbum.details
-  //     //newAlbum.location
-  //   })
-  // })
-  //const result = await reply.json()
-  return reply.data.item   //result.newItem
+
+  return reply.data.item   
 }
 
 export async function deleteAlbum(albumId: string, idToken: string): Promise<void> 
@@ -89,42 +61,29 @@ export async function deleteAlbum(albumId: string, idToken: string): Promise<voi
     }
   })
 }
-//   console.log('Deleting album')
 
-//   await fetch(`${apiEndpoint}/albums/${albumId}`, {
-//     method: 'DELETE',
-//     headers: {
-//       'Content-Type': 'application/json',
-//       'Authorization': `Bearer ${idToken}`
-//     },
-//   })
-// }
 
 export async function editAlbum(albumId: string, idToken: string,patch:UpdateAlbumInfo): 
 
   Promise<void> {
+    console.log('album id:',albumId)
+    console.log(' Token:',idToken)
     await Axios.patch(`${apiEndpoint}/albums/${albumId}`, JSON.stringify(patch), {
       headers: {
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${idToken}`
       }
     })
-  // await fetch(`${apiEndpoint}/albums/${albumId}`, {
-  //   method: 'PUT',
-  //   headers: {
-  //     'Content-Type': 'application/json',
-  //     'Authorization': `Bearer ${idToken}`
-  //   },
-  // })
+
 }
 
-export async function updateImageCounter(albumId: string, idToken: string): 
+export async function updateImageCounter(albumId: string, idToken: string,count:number): 
 
   Promise<void> {
 
-    console.log('ambum id:',albumId)
+    console.log('album id:',albumId)
     console.log(' Token:',idToken)
-    const reply = await Axios.post(`${apiEndpoint}/albums/${albumId}/counter`,  {
+    const reply = await Axios.post(`${apiEndpoint}/albums/${albumId}/counter`, {count}, {
       headers: {
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${idToken}`
@@ -138,6 +97,8 @@ export async function saveAlbum(albumId: string, idToken: string,patch:UpdateAlb
 
   Promise<void> {
 
+    console.log('save album id:',albumId)
+    console.log('save Token:',idToken)
     const reply = await Axios.post(`${apiEndpoint}/albums/${albumId}/save`, {name:patch.name,description:patch.details,location:patch.location}, {
       headers: {
         'Content-Type': 'application/json',
@@ -147,11 +108,4 @@ export async function saveAlbum(albumId: string, idToken: string,patch:UpdateAlb
 
     return reply.data.items
     
-  // await fetch(`${apiEndpoint}/albums/${albumId}`, {
-  //   method: 'PUT',
-  //   headers: {
-  //     'Content-Type': 'application/json',
-  //     'Authorization': `Bearer ${idToken}`
-  //   },
-  // })
 }

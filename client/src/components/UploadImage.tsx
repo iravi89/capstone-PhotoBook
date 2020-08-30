@@ -53,6 +53,8 @@ export class CreateImage extends React.PureComponent<
     })
   }
 
+
+
   handleSubmit = async (event: React.SyntheticEvent) => {
     event.preventDefault()
 
@@ -72,7 +74,7 @@ export class CreateImage extends React.PureComponent<
 
       this.setUploadState(UploadState.UploadingFile)
       await uploadFile(uploadInfo.uploadUrl, this.state.file)
-      await updateImageCounter(this.props.match.params.albumId,this.props.auth.getIdToken())
+      await updateImageCounter(this.props.match.params.albumId,this.props.auth.getIdToken(),1)
 
       alert('Image uploaded!')
       this.setRedirect(true)
@@ -107,7 +109,7 @@ export class CreateImage extends React.PureComponent<
         {this.renderRedirect()}
         <h1>Upload new image</h1>
 
-        <Form onSubmit={this.handleSubmit}>
+        <Form onSubmit={this.handleSubmit} >
           <Form.Field>
             <label>Title</label>
             <input

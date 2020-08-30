@@ -5,6 +5,7 @@ import { getAlbum } from '../api/Albums-api'
 import { Card, Divider, Button, Icon, Image } from 'semantic-ui-react'
 import { History } from 'history'
 import Auth from '../auth/Auth'
+import { updateImageCounter } from '../api/Albums-api'
 
 interface ImagesListProps {
   history: History
@@ -37,6 +38,7 @@ export class ImagesList extends React.PureComponent<
   onImageDelete = async (imageId: string) => {
     try {
       await deleteImage(imageId, this.props.auth.getIdToken())
+      //await updateImageCounter(this.props.match.params.albumId,this.props.auth.getIdToken(),-1)
       this.setState({
         images: this.state.images.filter(image => image.imageId != imageId)
       })
