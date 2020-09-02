@@ -5,6 +5,9 @@ import {UpdateAlbum} from '../types/UpdateAlbum'
 import Axios from 'axios'
 import { UpdateAlbumInfo } from '../types/UpdateAlbumInfo'
 import { pathToFileURL } from 'url'
+
+
+
 export async function getAlbums(idToken: string): Promise<AlbumModel[]> {
   console.log('Fetching albums')
 
@@ -16,7 +19,7 @@ export async function getAlbums(idToken: string): Promise<AlbumModel[]> {
     },
   })
 
-
+  
   return response.data.items
 }
 
@@ -83,7 +86,7 @@ export async function updateImageCounter(albumId: string, idToken: string,count:
 
     console.log('album id:',albumId)
     console.log(' Token:',idToken)
-    const reply = await Axios.post(`${apiEndpoint}/albums/${albumId}/counter`, {count}, {
+    const reply = await Axios.post(`${apiEndpoint}/albums/${albumId}/counter`, count, {
       headers: {
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${idToken}`

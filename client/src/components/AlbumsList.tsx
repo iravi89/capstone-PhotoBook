@@ -22,6 +22,8 @@ export class AlbumsList extends React.PureComponent<AlbumsListProps, AlbumsListS
     albums: []
   }
 
+  
+
   createAlbumHandler = () => {
     this.props.history.push(`/albums/create`)
   }
@@ -48,6 +50,8 @@ export class AlbumsList extends React.PureComponent<AlbumsListProps, AlbumsListS
       this.setState({
         albums
       })
+
+      console.log('Hello:'+ albums[0].imgCnt)
     } catch (e) {
       alert(`Failed to fetch albums: ${e.message}`)
     }
@@ -72,6 +76,7 @@ export class AlbumsList extends React.PureComponent<AlbumsListProps, AlbumsListS
 
         <Card.Group>
           {this.state.albums.map(album => {
+
             return       <Card key={album.id}>
             <Card.Content>
               <Card.Header>
@@ -98,7 +103,7 @@ export class AlbumsList extends React.PureComponent<AlbumsListProps, AlbumsListS
               <Card.Description>Description:  {album.description}</Card.Description>
               <Card.Description>Location:  {album.location}</Card.Description>
               <Card.Description>Date:  { album.timestamp}</Card.Description>
-              <Card.Description>Images:  {album.imageCount}</Card.Description>
+              <Card.Description>Images:  {album.imgCnt}</Card.Description>
             </Card.Content>
             </Card>
           })}

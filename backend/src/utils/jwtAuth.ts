@@ -5,7 +5,7 @@ import { createLogger } from '../utils/logger'
 const logger = createLogger('createAlbum')
 
 export function getUserById(authHeader: string): string{
-  logger.info('Authenticating user with jwt ${authHeader}')
+  logger.info('Authenticating user with jwt ',authHeader)
   console.log('In Function:authHeader',authHeader)
 
   if (!authHeader) throw new Error(' authentication header null')

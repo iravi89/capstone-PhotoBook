@@ -11,6 +11,7 @@ import { getUserById} from '../../utils/jwtAuth'
 const logger = createLogger('Albumlogs')
 export const handler: APIGatewayProxyHandler = async (event: APIGatewayProxyEvent): Promise<APIGatewayProxyResult> => {
 
+  console.log('Processing event Upload Image: ', event)
   const authHeader = event.headers['Authorization']
   const jwtToken = getUserById(authHeader)
   const albumId = event.pathParameters.albumId

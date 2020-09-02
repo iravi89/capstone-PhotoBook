@@ -27,7 +27,7 @@ custom:
         schema: ${file(src/model/json-schema/create-image-request.json)}
       - name: SaveAlbums
         contentType: application/json
-        schema: ${file(src/model/json-schema/create-image-request.json)}
+        schema: ${file(src/model/json-schema/create-album-request.json)}
       - name: UpdateAlbumsImage
         contentType: application/json
         schema: ${file(src/model/json-schema/update-album-request.json)}
@@ -135,6 +135,7 @@ functions:
       - Effect: Allow
         Action:
           - dynamodb:PutItem
+          - dynamodb:UpdateItem
         Resource: arn:aws:dynamodb:${self:provider.region}:*:table/${self:provider.environment.ALBUMS_TABLE}
 
   UpdateAlbumsImage:
@@ -150,11 +151,11 @@ functions:
             description: create new Alnum
             requestModels:
               "application/json": UpdateAlbumsImage
-      - http:
-          method: get
-          path: albums/{albumId}
-          cors: true
-          authorizer: Auth
+      # - http:
+      #     method: get
+      #     path: albums/{albumId}
+      #     cors: true
+      #     authorizer: Auth
     iamRoleStatements:
       - Effect: "Allow" # xray permissions (required)
         Action:
@@ -166,6 +167,7 @@ functions:
         Action:
           - dynamodb:PutItem
           - dynamodb:GetItem
+          - dynamodb:UpdateItem
         Resource: arn:aws:dynamodb:${self:provider.region}:*:table/${self:provider.environment.ALBUMS_TABLE}
 
   UploadImage:

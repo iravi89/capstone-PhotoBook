@@ -49,7 +49,8 @@ export async function saveAlbum(
   const itemId = albumId
   const userId = jwtToken
 
-  return await albumAccess.createAlbum({
+
+  return await albumAccess.updateAlbum({
     id: itemId,
     userId: userId,
     name: saveAlbumRequest.name,
@@ -59,29 +60,52 @@ export async function saveAlbum(
     location:saveAlbumRequest.location,
     imgCnt:saveAlbumRequest.imageCount
   })
+  // return await albumAccess.createAlbum({
+  //   id: itemId,
+  //   userId: userId,
+  //   name: saveAlbumRequest.name,
+  //   description: saveAlbumRequest.description,
+  //   private: saveAlbumRequest.private,
+  //   timestamp: new Date().toISOString(),
+  //   location:saveAlbumRequest.location,
+  //   imgCnt:saveAlbumRequest.imageCount
+  // })
 }
 
 
 export async function updateImageCounter(
   jwtToken: string,
   albumId:string,
-  albumRequest: CreateAlbumInterface
+  counter:number
+  //albumRequest: CreateAlbumInterface
 ): Promise<Album> {
 
   //const img = await albumAccess.getAlbum(albumId,jwtToken)
   const itemId = albumId
   const userId = jwtToken
-
-  return await albumAccess.createAlbum({
+  console.log("COUNTER LOG:"+counter)
+  return await albumAccess.updateImageCounter({
     id: itemId,
     userId: userId,
-    name: albumRequest.name,
-    description: albumRequest.description,
-    private: albumRequest.private,
+    name: "",//albumRequest.name,
+    description: "",//albumRequest.description,
+    private: false,//albumRequest.private,
     timestamp: new Date().toISOString(),
-    location:albumRequest.location,
-    imgCnt:4
-  })
+    location:"",//albumRequest.location,
+    imgCnt:counter
+  },counter)
+
+
+  // return await albumAccess.createAlbum({
+  //   id: itemId,
+  //   userId: userId,
+  //   name: albumRequest.name,
+  //   description: albumRequest.description,
+  //   private: albumRequest.private,
+  //   timestamp: new Date().toISOString(),
+  //   location:albumRequest.location,
+  //   imgCnt:4
+  // })
 }
 
 
@@ -101,6 +125,7 @@ export async function getAlbum (
   jwtToken: string
 ): Promise<Album> {
   const userId = jwtToken
+  console.log(albumId);
   return await albumAccess.getAlbum(
     userId,
     albumId

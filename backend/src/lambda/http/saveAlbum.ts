@@ -10,6 +10,8 @@ import { getUserById} from '../../utils/jwtAuth'
 const logger = createLogger('Albumlogs')
 export const handler: APIGatewayProxyHandler = async (event: APIGatewayProxyEvent): Promise<APIGatewayProxyResult> => {
   console.log('Processing event: ', event)
+  logger.info('path:',event.path)
+  logger.info('Path album id:',event.pathParameters.albumId)
   const albumId = event.pathParameters.albumId
   const authHeader = event.headers['Authorization']
   const jwtToken = getUserById(authHeader)
