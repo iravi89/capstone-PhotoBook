@@ -17,6 +17,7 @@ export const handler: APIGatewayProxyHandler = async (event: APIGatewayProxyEven
     return new ApiResponseHelper().generateErrorResponse(404,'Album not found')
 
   }
+  logger.error(`Album retrievd`)
 
   return {
     statusCode: 200,

@@ -111,28 +111,6 @@ functions:
           - dynamodb:Query
         Resource: arn:aws:dynamodb:${self:provider.region}:*:table/${self:provider.environment.ALBUMS_TABLE}
 
-  GetAlbum:
-    handler: src/lambda/http/getAlbum.handler
-    events:
-      - http:
-          method: get
-          path: albums/{albumId}
-          cors: true
-          authorizer: Auth
-    iamRoleStatements:
-      - Effect: "Allow"
-        Action:
-          - "xray:PutTraceSegments"
-          - "xray:PutTelemetryRecords"
-        Resource:
-          - "*"
-      - Effect: Allow
-        Action:
-          - dynamodb:GetItem
-        Resource: arn:aws:dynamodb:${self:provider.region}:*:table/${self:provider.environment.ALBUMS_TABLE}
-
-
-
   SaveAlbums:
     handler: src/lambda/http/saveAlbum.handler
     events:
@@ -276,12 +254,32 @@ functions:
           - dynamodb:Query
         Resource: arn:aws:dynamodb:${self:provider.region}:*:table/${self:provider.environment.IMAGES_TABLE}
 
-  GetAllImages:
-    handler: src/lambda/http/getAllImages.handler
+  # GetAllImages:
+  #   handler: src/lambda/http/getAllImages.handler
+  #   events:
+  #     - http:
+  #         method: get
+  #         path: /images
+  #         cors: true
+  #         authorizer: Auth
+  #   iamRoleStatements:
+  #     - Effect: "Allow"
+  #       Action:
+  #         - "xray:PutTraceSegments"
+  #         - "xray:PutTelemetryRecords"
+  #       Resource:
+  #         - "*"
+  #     - Effect: Allow
+  #       Action:
+  #         - dynamodb:query
+  #       Resource: arn:aws:dynamodb:${self:provider.region}:*:table/${self:provider.environment.IMAGES_TABLE}
+
+  GetAlbum:
+    handler: src/lambda/http/getAlbum.handler
     events:
       - http:
           method: get
-          path: /images
+          path: albums/{albumId}
           cors: true
           authorizer: Auth
     iamRoleStatements:
@@ -293,36 +291,8 @@ functions:
           - "*"
       - Effect: Allow
         Action:
-          - dynamodb:query
-        Resource: arn:aws:dynamodb:${self:provider.region}:*:table/${self:provider.environment.IMAGES_TABLE}
-
-
-  PinImage:
-    handler: src/lambda/http/pinImage.handler
-    events:
-      - http:
-          method: post
-          path: images/{imageId}
-          cors: true
-          authorizer: Auth
-    iamRoleStatements:
-      - Effect: "Allow"
-        Action:
-          - "xray:PutTraceSegments"
-          - "xray:PutTelemetryRecords"
-        Resource:
-          - "*"
-      - Effect: Allow
-        Action:
-          - dynamodb:PutItem
-        Resource: arn:aws:dynamodb:${self:provider.region}:*:table/${self:provider.environment.IMAGES_TABLE}
-      - Effect: Allow
-        Action:
-          - dynamodb:Query
-        Resource: arn:aws:dynamodb:${self:provider.region}:*:table/${self:provider.environment.IMAGES_TABLE}/index/${self:provider.environment.IMAGE_ID_INDEX}
-
-
-
+          - dynamodb:GetItem
+        Resource: arn:aws:dynamodb:${self:provider.region}:*:table/${self:provider.environment.ALBUMS_TABLE}
 
   DeleteImage:
     handler: src/lambda/http/deleteImage.handler
@@ -374,6 +344,29 @@ functions:
           - dynamodb:DeleteItem
         Resource: arn:aws:dynamodb:${self:provider.region}:*:table/${self:provider.environment.ALBUMS_TABLE}
 
+  PinImage:
+    handler: src/lambda/http/pinImage.handler
+    events:
+      - http:
+          method: post
+          path: images/{imageId}
+          cors: true
+          authorizer: Auth
+    iamRoleStatements:
+      - Effect: "Allow"
+        Action:
+          - "xray:PutTraceSegments"
+          - "xray:PutTelemetryRecords"
+        Resource:
+          - "*"
+      - Effect: Allow
+        Action:
+          - dynamodb:PutItem
+        Resource: arn:aws:dynamodb:${self:provider.region}:*:table/${self:provider.environment.IMAGES_TABLE}
+      - Effect: Allow
+        Action:
+          - dynamodb:Query
+        Resource: arn:aws:dynamodb:${self:provider.region}:*:table/${self:provider.environment.IMAGES_TABLE}/index/${self:provider.environment.IMAGE_ID_INDEX}
 
 resources:
   Resources:

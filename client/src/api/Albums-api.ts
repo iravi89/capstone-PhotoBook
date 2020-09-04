@@ -38,7 +38,6 @@ export async function getAlbum(albumId: string, idToken: string): Promise<AlbumM
 
   return response.data.album
 }
-
 export async function createAlbum(
   idToken: string,
   newAlbum: AlbumUploadInfo,

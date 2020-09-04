@@ -72,7 +72,9 @@ export class ImagesList extends React.PureComponent<
   async componentDidMount() {
     try {
       const album = await getAlbum(this.props.match.params.albumId, this.props.auth.getIdToken())
+      console.log('Album retrived')
       const images = await getImages(this.props.match.params.albumId, this.props.auth.getIdToken())
+      console.log('Images retrived')
       this.setState({
         images,
         albumName: album.name,
@@ -86,7 +88,7 @@ export class ImagesList extends React.PureComponent<
 
   render() {
     const mystyle1 = {
-      boxShadow:"3px 3px 5px 6px #fff",
+      boxShadow:"3px 3albumspx 5px 6px #fff",
       backgroundColor:this.generateColor,
       width:"400px",
 
