@@ -7,9 +7,7 @@ import { getUserById} from '../../utils/jwtAuth'
 
 const logger = createLogger('Albumlogs')
 export const handler: APIGatewayProxyHandler = async (event: APIGatewayProxyEvent): Promise<APIGatewayProxyResult> => {
-  // const authorization = event.headers.Authorization
-  // const split = authorization.split(' ')
-  // const jwtToken = split[1]
+ 
   const albumId = event.pathParameters.albumId
   const authHeader = event.headers['Authorization']
   const jwtToken = getUserById(authHeader)
@@ -18,7 +16,6 @@ export const handler: APIGatewayProxyHandler = async (event: APIGatewayProxyEven
   if (!album) {
     logger.error(`Album not found to delete`)
     return new ApiResponseHelper().generateErrorResponse(404,'Album not found')
-
   }
 
   try {

@@ -45,9 +45,39 @@ FavouriteImagesState
   }
 
   render() {
+    const mystyle1 = {
+      boxShadow:"3px 3px 5px 6px #ccc",
+      backgroundColor:'#dee7ff',
+      width:"500px",
+      font: "120px"
+      
+    };
+    const mystyle3 = {
+      boxShadow:"3px 3px 5px 6px #ccc",
+      backgroundColor:'#3399ff',
+      width:"50px",
+      height:"50px",
+      text:"dfd"
+    };
+    const mystyle2 = {
+      boxShadow:"5px 5px 10px grey",
+      backgroundColor:'transparent',
+      color:'grey',
+      border:'20px',
+      bordercolor:"green",
+      padding:"10px"
+    };
+
+    const mystyle4 =
+    { 
+      background:"transparent",
+      padding: "5%",
+      color:"#ffffff",
+      boxShadow:"10px 10px 10px 10px #ccc",
+    };
     return (
-      <div>
-        <h1>Favourite Images:</h1>
+      <div style={mystyle4}>
+        <h1 style={mystyle2}>Favourite Images:</h1>
 
         <Divider clearing />
 
@@ -66,10 +96,11 @@ FavouriteImagesState
                       Remove
                 </Button>
               </Card.Header>
-              <Card.Description>{image.timestamp}</Card.Description>
+              
               {image.imageUrl && (
                 <Image src={image.imageUrl} />
               )}
+              <Card.Description>Created on: {image.timestamp}</Card.Description>
             </Card.Content>
           </Card>
           })}

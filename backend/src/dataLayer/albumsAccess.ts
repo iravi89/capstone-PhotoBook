@@ -6,7 +6,6 @@ const AWSXRay = require('aws-xray-sdk')
 const XAWS = AWSXRay.captureAWS(AWS)
 
 import { Album } from '../models/Album'
-import { Image } from '../models/Image'
 
 export class AlbumAccess {
 
@@ -17,13 +16,23 @@ export class AlbumAccess {
 
   async getAlbums(userId: string): Promise<Album[]> {
     console.log('Getting albums')
-    const result = await this.docClient.query({
+
+    const params = {
       TableName: this.albumsTable,
       KeyConditionExpression: 'userId = :userId',
       ExpressionAttributeValues: {
         ':userId': userId
       }
-    }).promise()
+    }
+    const result = await this.docClient.query(params).promise()
+
+    // const result = await this.docClient.query({
+    //   TableName: this.albumsTable,
+    //   KeyConditionExpression: 'userId = :userId',
+    //   ExpressionAttributeValues: {
+    //     ':userId': userId
+    //   }
+    // }).promise()
 
     const items = result.Items
     return items as Album[]
@@ -58,10 +67,15 @@ export class AlbumAccess {
 
   async createAlbum(album: Album): Promise<Album> {
 
-    await this.docClient.put({
+    const params = {
       TableName: this.albumsTable,
       Item: album
-    }).promise()
+    }
+    await this.docClient.put(params).promise()
+    // await this.docClient.put({
+    //   TableName: this.albumsTable,
+    //   Item: album
+    // }).promise()
 
     return album
   }
@@ -84,9 +98,6 @@ export class AlbumAccess {
 
   async updateImageCounter(album: Album,counter:number): Promise<Album> {
 
-    console.log('Name:'+album.name)
-    console.log('Description:'+album.description)
-    console.log('Image Counter --->:'+counter.valueOf())
     await this.docClient.update({
       TableName: this.albumsTable, 
       Key:{ "userId": album.userId,"id":album.id},
@@ -101,13 +112,23 @@ export class AlbumAccess {
 
 
   async deleteAlbum(userId: string, albumId: string): Promise<void> {
-    await this.docClient.delete({
+
+
+    const params = {
       TableName: this.albumsTable,
       Key: {
         id: albumId,
         userId: userId
       }
-    }).promise()
+    }
+    await this.docClient.delete(params).promise()
+    // await this.docClient.delete({
+    //   TableName: this.albumsTable,
+    //   Key: {
+    //     id: albumId,
+    //     userId: userId
+    //   }
+    // }).promise()
   }
 }
 

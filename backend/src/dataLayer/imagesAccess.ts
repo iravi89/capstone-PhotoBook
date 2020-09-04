@@ -16,11 +16,13 @@ export class ImagesAccess {
     private readonly imageIdIndex = process.env.IMAGE_ID_INDEX) {
   }
   async createImage(image: Image): Promise<Image> {
-    await this.docClient.put({
-      TableName: this.imagesTable,
-      Item: image
-    }).promise()
 
+    var params = {
+      TableName : this.imagesTable,
+      Item:image,
+  };
+
+  await this.docClient.put(params).promise()
     return image
   }
 
@@ -32,32 +34,44 @@ export class ImagesAccess {
 
   async getImages(albumId: string): Promise<Image[]> {
   
-    const result = await this.docClient.query({
-      TableName: this.imagesTable,
-      KeyConditionExpression: 'albumId = :albumId',
+    var params = {
+      TableName : this.imagesTable,
+      KeyConditionExpression: "#id = :albumId",
+      ExpressionAttributeNames:{
+          "#id": "albumId"
+      },
       ExpressionAttributeValues: {
-        ':albumId': albumId
+          ":albumId": albumId
       }
-    }).promise()
+  };
+
+  const result = await this.docClient.query(params).promise()
     const items = result.Items
     return items as Image[]
   }
 
   async getImage(imageId: string): Promise<Image> {
-    const result = await this.docClient.query({
-        TableName : this.imagesTable,
-        IndexName : this.imageIdIndex,
-        KeyConditionExpression: 'imageId = :imageId',
-        ExpressionAttributeValues: {
-            ':imageId': imageId
-        }
-    }).promise()
+
+    var params = {
+      TableName : this.imagesTable,
+      IndexName : this.imageIdIndex,
+      KeyConditionExpression: "#id = :imageId",
+      ExpressionAttributeNames:{
+          "#id": "imageId"
+      },
+      ExpressionAttributeValues: {
+          ":imageId": imageId
+      }
+  };
+
+  const result = await this.docClient.query(params).promise()
     if (result.Count !== 0) {
       return result.Items[0] as Image
     }
   }
 
   async deleteImage(image: Image) {
+
     const params = {
       TableName : this.imagesTable,
       Key: {
@@ -69,9 +83,11 @@ export class ImagesAccess {
   }
 
   async getAllImages(): Promise<Image[]> {
-    const result = await this.docClient.query({
-      TableName: this.imagesTable,
-    }).promise()
+    const params = {
+      TableName : this.imagesTable,
+      
+    }
+    const result = await this.docClient.query(params).promise()
     const items = result.Items
     return items as Image[]
   }

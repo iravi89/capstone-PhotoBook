@@ -97,6 +97,11 @@ export class CreateImage extends React.PureComponent<
     })
   }
 
+  handleCancel = async (test:any) => {
+    console.log('cancel pressed')
+    this.setRedirect(true)
+  }
+
   renderRedirect = () => {
     if (this.state.redirect) {
       return <Redirect to={`/images/${this.props.match.params.albumId}`} />
@@ -146,6 +151,9 @@ export class CreateImage extends React.PureComponent<
         >
           Upload
         </Button>
+        <Button floated="right" color="orange" onClick={()=> this.handleCancel('cancel')} >
+        Cancel
+      </Button>
       </div>
     )
   }

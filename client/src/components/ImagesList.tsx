@@ -2,7 +2,7 @@ import * as React from 'react'
 import { ImageModel } from '../types/ImageModel'
 import { getImages, deleteImage,pinImage } from '../api/images-api'
 import { getAlbum } from '../api/Albums-api'
-import { Card, Divider, Button, Icon, Image } from 'semantic-ui-react'
+import { Card, Divider, Button, Icon, Image,} from 'semantic-ui-react'
 import { History } from 'history'
 import Auth from '../auth/Auth'
 import { updateImageCounter } from '../api/Albums-api'
@@ -19,7 +19,9 @@ interface ImagesListProps {
 
 interface ImagesListState {
   images: ImageModel[]
+  imageIsPin:boolean
   albumName: string
+  albumLoc:string
 }
 
 export class ImagesList extends React.PureComponent<
@@ -28,7 +30,9 @@ export class ImagesList extends React.PureComponent<
 > {
   state: ImagesListState = {
     images: [],
-    albumName: ''
+    imageIsPin:false,
+    albumName: '',
+    albumLoc:''
   }
 
   handleCreateImage = () => {
@@ -42,6 +46,7 @@ export class ImagesList extends React.PureComponent<
       this.setState({
         images: this.state.images.filter(image => image.imageId != imageId)
       })
+      alert('Image Deleted')
     } catch {
       alert('Image deletion failed')
     }
@@ -58,15 +63,21 @@ export class ImagesList extends React.PureComponent<
     }
   }
 
-
+  async generateColor()
+  {
+  const randomColor = "#" +  Math.floor(Math.random()*16777215).toString(16)
+  console.log("Color:"+randomColor)
+  return randomColor
+  }
   async componentDidMount() {
     try {
       const album = await getAlbum(this.props.match.params.albumId, this.props.auth.getIdToken())
       const images = await getImages(this.props.match.params.albumId, this.props.auth.getIdToken())
-      console.log("image recieved...")
       this.setState({
         images,
-        albumName: album.name
+        albumName: album.name,
+        albumLoc :album.location
+
       })
     } catch (e) {
       alert(`Failed to fetch images for album : ${e.message}`)
@@ -74,24 +85,44 @@ export class ImagesList extends React.PureComponent<
   }
 
   render() {
+    const mystyle1 = {
+      boxShadow:"3px 3px 5px 6px #fff",
+      backgroundColor:this.generateColor,
+      width:"400px",
+
+      
+    };
+
+    const mystyle2 =
+    { 
+      background:"#1c87c9",
+      padding: "20px",
+      color:"#ffffff",
+      blur:"5px"
+    };
     return (
       <div>
         <h1>{this.state.albumName}</h1>
+        <h3>Location:   {this.state.albumLoc}</h3>
 
         <Button
           primary
           size="huge"
           className="add-button"
           onClick={this.handleCreateImage}
+          circular={true}
+          label="Add"
+          color="google plus"
+
         >
-          Upload new image
+          
         </Button>
 
         <Divider clearing />
 
         <Card.Group itemsPerRow={3}>
           {this.state.images.map(image => {
-            return       <Card fluid color="blue" key={image.imageId}>
+            return       <Card style={mystyle1}  fluid color="blue" key={image.imageId}>
             <Card.Content>
               <Card.Header>{image.title}
                 <Button
@@ -113,10 +144,11 @@ export class ImagesList extends React.PureComponent<
                       <Icon name="pin" />
                 </Button>
               </Card.Header>
-              <Card.Description>{image.timestamp}</Card.Description>
+              
               {image.imageUrl && (
                 <Image src={image.imageUrl} />
               )}
+              <Card.Description>Created on: {image.timestamp}</Card.Description>
             </Card.Content>
           </Card>
           })}

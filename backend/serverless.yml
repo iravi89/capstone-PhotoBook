@@ -21,16 +21,16 @@ custom:
     models:
       - name: CreateAlbum
         contentType: application/json
-        schema: ${file(src/model/json-schema/create-album-request.json)}
+        schema: ${file(src/model/json-schema/create_album_json_request.json)}
       - name: UploadImage
         contentType: application/json
-        schema: ${file(src/model/json-schema/create-image-request.json)}
+        schema: ${file(src/model/json-schema/create_image_json_request.json)}
       - name: SaveAlbums
         contentType: application/json
-        schema: ${file(src/model/json-schema/create-album-request.json)}
+        schema: ${file(src/model/json-schema/create_album_json_request.json)}
       - name: UpdateAlbumsImage
         contentType: application/json
-        schema: ${file(src/model/json-schema/update-album-request.json)}
+        schema: ${file(src/model/json-schema/update_album_json_request.json)}
 
 
 # Add the serverless-webpack plugin
@@ -110,6 +110,28 @@ functions:
         Action:
           - dynamodb:Query
         Resource: arn:aws:dynamodb:${self:provider.region}:*:table/${self:provider.environment.ALBUMS_TABLE}
+
+  GetAlbum:
+    handler: src/lambda/http/getAlbum.handler
+    events:
+      - http:
+          method: get
+          path: albums/{albumId}
+          cors: true
+          authorizer: Auth
+    iamRoleStatements:
+      - Effect: "Allow"
+        Action:
+          - "xray:PutTraceSegments"
+          - "xray:PutTelemetryRecords"
+        Resource:
+          - "*"
+      - Effect: Allow
+        Action:
+          - dynamodb:GetItem
+        Resource: arn:aws:dynamodb:${self:provider.region}:*:table/${self:provider.environment.ALBUMS_TABLE}
+
+
 
   SaveAlbums:
     handler: src/lambda/http/saveAlbum.handler
@@ -239,7 +261,7 @@ functions:
     events:
       - http:
           method: get
-          path: /pins
+          path: /favs
           cors: true
           authorizer: Auth
     iamRoleStatements:
@@ -274,12 +296,13 @@ functions:
           - dynamodb:query
         Resource: arn:aws:dynamodb:${self:provider.region}:*:table/${self:provider.environment.IMAGES_TABLE}
 
-  GetAlbum:
-    handler: src/lambda/http/getAlbum.handler
+
+  PinImage:
+    handler: src/lambda/http/pinImage.handler
     events:
       - http:
-          method: get
-          path: albums/{albumId}
+          method: post
+          path: images/{imageId}
           cors: true
           authorizer: Auth
     iamRoleStatements:
@@ -291,8 +314,15 @@ functions:
           - "*"
       - Effect: Allow
         Action:
-          - dynamodb:GetItem
-        Resource: arn:aws:dynamodb:${self:provider.region}:*:table/${self:provider.environment.ALBUMS_TABLE}
+          - dynamodb:PutItem
+        Resource: arn:aws:dynamodb:${self:provider.region}:*:table/${self:provider.environment.IMAGES_TABLE}
+      - Effect: Allow
+        Action:
+          - dynamodb:Query
+        Resource: arn:aws:dynamodb:${self:provider.region}:*:table/${self:provider.environment.IMAGES_TABLE}/index/${self:provider.environment.IMAGE_ID_INDEX}
+
+
+
 
   DeleteImage:
     handler: src/lambda/http/deleteImage.handler
@@ -344,29 +374,6 @@ functions:
           - dynamodb:DeleteItem
         Resource: arn:aws:dynamodb:${self:provider.region}:*:table/${self:provider.environment.ALBUMS_TABLE}
 
-  PinImage:
-    handler: src/lambda/http/pinImage.handler
-    events:
-      - http:
-          method: post
-          path: images/{imageId}
-          cors: true
-          authorizer: Auth
-    iamRoleStatements:
-      - Effect: "Allow"
-        Action:
-          - "xray:PutTraceSegments"
-          - "xray:PutTelemetryRecords"
-        Resource:
-          - "*"
-      - Effect: Allow
-        Action:
-          - dynamodb:PutItem
-        Resource: arn:aws:dynamodb:${self:provider.region}:*:table/${self:provider.environment.IMAGES_TABLE}
-      - Effect: Allow
-        Action:
-          - dynamodb:Query
-        Resource: arn:aws:dynamodb:${self:provider.region}:*:table/${self:provider.environment.IMAGES_TABLE}/index/${self:provider.environment.IMAGE_ID_INDEX}
 
 resources:
   Resources:

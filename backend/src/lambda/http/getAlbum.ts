@@ -13,8 +13,7 @@ export const handler: APIGatewayProxyHandler = async (event: APIGatewayProxyEven
   const album = await getAlbum(albumId, jwtToken)
 
   if (!album) {
-  logger.error(`Album not found`)
-
+    logger.error(`Album not found`)
     return new ApiResponseHelper().generateErrorResponse(404,'Album not found')
 
   }

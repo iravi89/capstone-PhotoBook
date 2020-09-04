@@ -48,6 +48,10 @@ CreateAlbumProps,
         alert('Name should not be empty')
         return
       }
+      if (!this.state.location) {
+        alert('Location should not be empty')
+        return
+      }
       if (!this.state.description) {
         alert('Description should not be empty')
         return
@@ -68,6 +72,11 @@ CreateAlbumProps,
     } finally {
       this.setUploadState(false)
     }
+  }
+
+  handleCancel = async (test:any) => {
+    console.log('cancel pressed')
+    this.setRedirect(true)
   }
 
   setUploadState(uploadingAlbum: boolean) {
@@ -121,6 +130,9 @@ CreateAlbumProps,
           </Form.Field>
           {this.renderButton()}
         </Form>
+        <Button floated="right" color="orange" onClick={()=> this.handleCancel('cancel')} >
+        Cancel
+      </Button>
       </div>
     )
   }
@@ -130,6 +142,7 @@ CreateAlbumProps,
       <Button loading={this.state.uploadingAlbum} type="submit">
         Create
       </Button>
+      
     )
   }
 }

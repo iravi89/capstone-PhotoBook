@@ -4,6 +4,5 @@ export interface ImageModel {
   imageUrl: string
   albumId: string
   timestamp: string
-
   isPin?: boolean
 }

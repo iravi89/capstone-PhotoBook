@@ -4,7 +4,7 @@ import Auth from '../auth/Auth'
 import {editAlbum,getAlbum,saveAlbum} from '../api/Albums-api'
 import {UpdateAlbumInfo} from '../types/UpdateAlbumInfo'
 import { Redirect } from 'react-router-dom'
-import { Album } from './Album'
+//import { Album } from './Album'
 
   
   interface EditAlbumProps {
@@ -41,8 +41,6 @@ import { Album } from './Album'
       
         async componentDidMount()
         {
-            
-            //const fetchedTeam = await getAlbum(this.props.match.params.albumId,this.props.auth.getIdToken())
 
             try {
                 //const t_album =  EditAlbumState()
@@ -56,16 +54,7 @@ import { Album } from './Album'
               } catch (e) {
                 alert(`Failed to fetch albums: ${e.message}`)
               }
-            // const team: UpdateAlbumInfo = {
-            //     name: fetchedTeam.name,
-            //     location: fetchedTeam.location,
-            //     details: fetchedTeam.description
-            
-            // }
-
-
-            //this.setState({album_name:fetchedTeam.name,location:fetchedTeam.location,des:fetchedTeam.description,albumId:this.props.match.params.albumId,loading:false,redirect:true})
-        }
+          }
     
         handleNameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
             this.setState({album_name:event.target.value})
@@ -132,6 +121,8 @@ import { Album } from './Album'
             return (
                 <div>
                   {this.renderRedirect()}
+                  <h2>Edit</h2>
+                  
                     <Form onSubmit={this.handleSubmit}>
                         <Form.Field>
                             <Label>Name</Label>
@@ -146,7 +137,7 @@ import { Album } from './Album'
     
                         <Form.Field>
                             <Label>Location</Label>
-                            <Input
+                            <Input width='200px'
                                 type='text'
                                 name='Location'
                                 placeholder='Add Location'
@@ -172,7 +163,6 @@ import { Album } from './Album'
                                     <Button color='green' type='submit' loading={this.state.loading}>Save</Button>
                                 </GridColumn>
                                 <GridColumn width='11'>
-    
                                 </GridColumn>
 
                             </GridRow>

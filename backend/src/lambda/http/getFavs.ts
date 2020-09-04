@@ -12,9 +12,6 @@ export const handler: APIGatewayProxyHandler = async (event: APIGatewayProxyEven
   const authHeader = event.headers['Authorization']
   const jwtToken = getUserById(authHeader)
   const userId = jwtToken
-
-  
-  
   const images = await getImages(userId)
   logger.info(`Listing all Fav images user ${userId}`)
   return new ApiResponseHelper().generateImagesDataSuccessResponse(200,images)

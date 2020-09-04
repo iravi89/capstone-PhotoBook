@@ -13,7 +13,6 @@ export const handler: APIGatewayProxyHandler = async (event: APIGatewayProxyEven
   const jwtToken = getUserById(authHeader)
   const albumId = event.pathParameters.albumId
 
-  //check
   const validAlbumId = await albumExists(albumId, jwtToken)
 
   if (!validAlbumId) {

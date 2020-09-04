@@ -3,7 +3,6 @@ import 'source-map-support/register'
 import { APIGatewayProxyEvent, APIGatewayProxyResult, APIGatewayProxyHandler } from 'aws-lambda'
 import { getUserById} from '../../utils/jwtAuth'
 import {getImage,deleteImage} from '../../businessLogic/items'
-//import { getUserId } from '../../auth/utils'
 import { ApiResponseHelper } from '../../helpers/apiResponseHelper'
 import { createLogger } from '../../utils/logger'
 

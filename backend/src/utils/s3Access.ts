@@ -22,7 +22,7 @@ export class S3Access{
     getPresignedUrl(imageId: string): string{
         return this.s3.getSignedUrl('putObject', {
             Bucket: process.env.IMAGES_S3_BUCKET,
-            Key: imageId,//`${imageId}.png`,
+            Key: imageId,
             Expires: this.urlExpiration
           }) as string ;
     }
