@@ -1,14 +1,14 @@
 import * as React from 'react'
 
-interface NotFoundProps {
+interface NoImageProps {
 }
 
-interface NotFoundState {
+interface NoImageState {
 }
 
-export class NotFound extends React.PureComponent<NotFoundProps, NotFoundState> {
+export class NoImage extends React.PureComponent<NoImageProps, NoImageState> {
   render() {
-    return <h1>No images uploaded yet, Please upload your first image. </h1>
+    return <h1 >No Images. </h1>
   }
 
 

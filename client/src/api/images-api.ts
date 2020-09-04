@@ -3,61 +3,36 @@ import { ImageModel } from '../types/ImageModel'
 import { ImageUploadInfo } from '../types/ImageUploadInfo'
 import { ImageUploadResponse } from '../types/ImageUploadResponse'
 import Axios from 'axios'
+import { REPL_MODE_SLOPPY } from 'repl'
+import { realpath } from 'fs'
 export async function getImages(albumId: string, idToken: string): Promise<ImageModel[]> {
   console.log('Fetching images')
 
-  const response = await fetch(`${apiEndpoint}/albums/${albumId}/images`, {
+  const reply = await Axios.get(`${apiEndpoint}/albums/${albumId}/images`, {
     headers: {
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${idToken}`
-    },
-  })
+    },})
 
-  // const reply = await Axios.get(`${apiEndpoint}/albums/${albumId}/images`, {
-  //   headers: {
-  //     'Content-Type': 'application/json',
-  //     'Authorization': `Bearer ${idToken}`
-  //   },})
-
-  const result = await response.json()
-
-  return result.items
+  
+  return reply.data.items
 
 }
 
-export async function getAllImages(idToken: string): Promise<ImageModel[]> {
-  console.log('Fetching all images')
-
-    // const reply = await Axios.get(`${apiEndpoint}/images`, {
-    // headers: {
-    //   'Content-Type': 'application/json',
-    //   'Authorization': `Bearer ${idToken}`
-    // },})
-  const response = await fetch(`${apiEndpoint}/images`, {
-    headers: {
-      'Content-Type': 'application/json',
-      'Authorization': `Bearer ${idToken}`
-    },
-  })
-  const result = await response.json()
-
-  return result.items
-  //return reply.data.item
-}
 
 export async function createImage(
   idToken: string,
   newImage: ImageUploadInfo
 ): Promise<ImageUploadResponse> {
 
-
-  // const reply = await Axios.post(`${apiEndpoint}/albums/${newImage.albumId}/images`, {
+  // console.log('going to start')
+  // const reply1 = await Axios.post(`${apiEndpoint}/albums/${newImage.albumId}/images`,JSON.stringify({newImage}), {
   //   headers: {
   //     'Content-Type': 'application/json',
   //     'Authorization': `Bearer ${idToken}`
-  //   },})
+  //   }})
 
-  //   return reply.data.item
+  //   console.log('passed till')
 
 
   const reply = await fetch(
@@ -74,15 +49,13 @@ export async function createImage(
     }
   )
 
-  return await reply.json()
+  console.log('Reply'+reply)
+ return await reply.json()
 }
 
 export async function uploadFile(uploadUrl: string, file: Buffer): Promise<void> {
  
-  await fetch(uploadUrl, {
-    method: 'PUT',
-    body: file
-  })
+  await Axios.put(uploadUrl, file)
 }
 
 export async function deleteImage(imageId: string, idToken: string): Promise<void> {
@@ -95,57 +68,33 @@ export async function deleteImage(imageId: string, idToken: string): Promise<voi
       'Authorization': `Bearer ${idToken}`
     },})
 
-  // await fetch(`${apiEndpoint}/images/${imageId}`, {
-  //   method: 'DELETE',
-  //   headers: {
-  //     'Content-Type': 'application/json',
-  //     'Authorization': `Bearer ${idToken}`
-  //   },
-  // })
+
 }
 
-export async function pinImage(imageId: string, idToken: string): Promise<ImageUploadResponse> {
+export async function pinImage(imageId: string, idToken: string): Promise<string> {
   console.log('Pinning image')
 
 
-  // const reply = await Axios.post(`${apiEndpoint}/images/${imageId}`, {
-  //   headers: {
-  //     'Content-Type': 'application/json',
-  //     'Authorization': `Bearer ${idToken}`
-  //   },})
-
-  const reply = await fetch(`${apiEndpoint}/images/${imageId}`, {
-    method: 'POST',
+  const reply1 = await Axios.post(`${apiEndpoint}/images/${imageId}`,'', {
     headers: {
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${idToken}`
-    },
-  })
+    },})
 
-  return await reply.json()
+    console.log('Pinning image passed')
   
- // return JSON.parse(reply.data)
+  return reply1.data.item
 }
 
 export async function getPins(idToken: string): Promise<ImageModel[]> {
   console.log('Fetching pins')
 
 
-  // const reply = await Axios.get(`${apiEndpoint}/favs`, {
-  //   headers: {
-  //     'Content-Type': 'application/json',
-  //     'Authorization': `Bearer ${idToken}`
-  //   },})
-
-   // const data = await reply.data.json() 
-  const response = await fetch(`${apiEndpoint}/favs`, {
+  const reply = await Axios.get(`${apiEndpoint}/favs`, {
     headers: {
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${idToken}`
-    },
-  })
-  const result = await response.json()
+    },})
 
-  return result.items
-  //return JSON.parse(reply.data)
+   return reply.data.items
 }

@@ -3,7 +3,7 @@ import { AlbumsList } from './components/AlbumsList'
 import { Router, Link, Route, Switch } from 'react-router-dom'
 import { Grid, Menu, Segment, Input, Button,Dropdown,Divider } from 'semantic-ui-react'
 import { ImagesList } from './components/ImagesList'
-import { NotFound } from './components/NoImage'
+import { NoImage } from './components/NoImage'
 import { CreateImage } from './components/UploadImage'
 import { CreateAlbum } from './components/createAlbum'
 import Auth from './auth/Auth'
@@ -214,7 +214,7 @@ With this App, you can easily create an album of your most memorable movents whi
             return <AlbumsList {...props} auth={this.props.auth} />
           }} />
 
-        <Route component={NotFound} />
+        <Route component={NoImage} />
       </Switch>
     )
   }

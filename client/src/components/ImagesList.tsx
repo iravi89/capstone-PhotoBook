@@ -54,8 +54,8 @@ export class ImagesList extends React.PureComponent<
 
   onImagePin = async (imageId: string) => {
     try {
-      const replyInfo = await pinImage(imageId, this.props.auth.getIdToken())
-      console.log('Favourite image', replyInfo)
+      await pinImage(imageId, this.props.auth.getIdToken())
+      //console.log('Favourite image', replyInfo)
       
       alert('Saved to My Favourite')
     } catch {
