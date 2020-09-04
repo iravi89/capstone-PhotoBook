@@ -28,9 +28,13 @@ Welcome page for new users:
 
 
 ![Menu](screenshoots/MenuList.png?raw=true "Image 2")
+
+
 There is a menu item at top-left from where user can navigate to `MyAlbum` and `Favorite` pages anytime.
 
 ![DashBoard](screenshoots/albumList.png?raw=true "Image 1")
+
+
 The Dashboard shows all the album created by signed user. User can create albums, edit album ,upload images to particular album. 
 
 
@@ -44,18 +48,24 @@ My Album screen list all the album created by user. All album card stores the fo
 5. Image: Count of images stored in that album.
 
 
+All album cards are provided with two buttons, green button to edit the album and red button to delete the album.
+
+User have the functionality to modify the details of the album anytime like change in name,location or description. date and tiem of modification gets stored automatically to database.
 
 
-User also have the functionality of modifying the details of the album anytime like change in name,location or description. date and tiem of modification gets stored automatically to database.
 ![EditAlbum](screenshoots/editAlbum.png?raw=true "Image 6")
+
+
 
 For uploading the images into album user can click the name of album , after this user will get navigate to upload image page. There user have to mention the title of the image and can upload the image from system. 
 ![Image Upload](screenshoots/upload.png?raw=true "Image 7")
 
-User can also save some images from multiple album to their favorite image list. For this user just have to open the album and pin the selected image which they want to same in favorite list. User can also delete the image from there itself.There user are provided with both the options.
+User can also save some images from multiple album to their favorite image list. For this user just have to open the album and pin the selected image which they want to save in favorite list. User can also delete the image from there itself.There user are provided with both the options.
 After succesfull pin, there will be confirmation message pop up for acknowledgement.
 
 ![Pin Image](screenshoots/FavImage.png?raw=true "Image 8")
+
+
 
 Now User can navigate to `Favorite` tab through Menu. There user can see all the favorite images pined by him.
 
