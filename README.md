@@ -41,6 +41,7 @@ My Album screen list all the album created by user. All album card stores the fo
 2. Location: Location of album mention by the user.
 3. Time: Time at which this album was created.
 4. Description: Brief about the album like a small story or something.
+5. Image: Count of images stored in that album.
 
 
 
